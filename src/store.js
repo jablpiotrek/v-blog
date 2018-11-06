@@ -14,7 +14,28 @@ firestore.settings(firestoreSettings);
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {}
+  state: {
+    posts: []
+  },
+  mutations: {
+    addPosts(state, newPosts) {
+      state.posts = newPosts;
+    }
+  },
+  actions: {
+    getPosts({ commit }) {
+      firestore
+        .collection("posts")
+        .get()
+        .then(response => {
+          console.log();
+          let newPosts = [];
+          response.forEach(doc => {
+            newPosts.push(doc.data());
+            console.log(doc.data());
+          });
+          commit("addPosts", newPosts);
+        });
+    }
+  }
 });
