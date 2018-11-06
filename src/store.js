@@ -28,11 +28,9 @@ export default new Vuex.Store({
         .collection("posts")
         .get()
         .then(response => {
-          console.log();
           let newPosts = [];
           response.forEach(doc => {
             newPosts.push(doc.data());
-            console.log(doc.data());
           });
           commit("addPosts", newPosts);
         });
