@@ -12,6 +12,9 @@ export default {
   name: "App",
   components: {
     HelloWorld
+  },
+  created() {
+    this.$store.dispatch("getPosts");
   }
 };
 </script>
