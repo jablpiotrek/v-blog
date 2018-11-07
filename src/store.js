@@ -15,11 +15,20 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    posts: []
+    posts: [],
+    currentUser: null
+  },
+  getters: {
+    isUserLoggedIn(state) {
+      return !!state.currentUser
+    }
   },
   mutations: {
     addPosts(state, newPosts) {
       state.posts = newPosts;
+    },
+    currentUser(state, user) {
+      state.currentUser = user;
     }
   },
   actions: {
@@ -34,6 +43,9 @@ export default new Vuex.Store({
           });
           commit("addPosts", newPosts);
         });
+    },
+    setCurrentUser({ commit }, user) {
+      commit("currentUser", user);
     }
   }
 });
