@@ -15,6 +15,10 @@ export default {
   components: {
     Navigation
   },
+  created() {
+    this.$store.dispatch("getPosts");
+    this.watchLoggedUser();
+  },
   methods: {
     watchLoggedUser() {
       firebase.auth().onAuthStateChanged(user => {
@@ -22,9 +26,5 @@ export default {
       });
     }
   },
-  created() {
-    this.$store.dispatch("getPosts");
-    this.watchLoggedUser();
-  }
 };
 </script>

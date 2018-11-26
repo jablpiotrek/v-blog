@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>
-      Home
+      Homeb
     </h2>
 
   </div>
@@ -10,6 +10,6 @@
 <script>
 
 export default {
-  name: "home"
+  name: "Home"
 };
 </script>

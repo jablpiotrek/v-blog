@@ -3,8 +3,7 @@
     <h3>
       { title }
     </h3>
-    <div v-html="content">
-    </div>
+    <div v-html="content" />
   </div>
 </template>
 

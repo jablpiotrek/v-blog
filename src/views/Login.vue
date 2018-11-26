@@ -1,33 +1,54 @@
 <template>
-    <div>
-      <h2>
-        Sign in
-      </h2>
-      <form v-if="!isUserLoggedIn" name="login">
-        <div>
-          <label for="">e-mail</label>
-          <input type="email" v-model="email" name="email" autocomplete="email">
-        </div>
-        <div>
-          <label for="">Password</label>
-          <input type="password" v-model="password" name="password" autocomplete="password">
-        </div>
-        <button type="button" name="log-in" @click="logIn">
-          Sign in
-        </button>
-      </form>
-      <div v-else>
-        <p>
-          You are logged in.
-        </p>
-        <button type="button" name="password" @click="logOut">
-          Log out
-        </button>
+  <div>
+    <h2>
+      Sign in
+    </h2>
+    <form 
+      v-if="!isUserLoggedIn" 
+      name="login"
+    >
+      <div>
+        <label for="">e-mail</label>
+        <input 
+          v-model="email" 
+          type="email" 
+          name="email" 
+          autocomplete="email"
+        >
       </div>
-      <p v-if="authError">
-        {{ authError.message }}
+      <div>
+        <label for="">Password</label>
+        <input 
+          v-model="password" 
+          type="password" 
+          name="password" 
+          autocomplete="password"
+        >
+      </div>
+      <button 
+        type="button" 
+        name="log-in" 
+        @click="logIn"
+      >
+        Sign in
+      </button>
+    </form>
+    <div v-else>
+      <p>
+        You are logged in.
       </p>
+      <button 
+        type="button" 
+        name="password" 
+        @click="logOut"
+      >
+        Log out
+      </button>
     </div>
+    <p v-if="authError">
+      {{ authError.message }}
+    </p>
+  </div>
 </template>
 
 <script>
@@ -58,7 +79,7 @@ export default {
         })
         .catch(error => {
           this.authError = error;
-        });
+      });
     },
     logOut() {
       firebase
@@ -69,7 +90,7 @@ export default {
         })
         .catch(error => {
           this.authError = error;
-        });
+      });
     }
   }
 };

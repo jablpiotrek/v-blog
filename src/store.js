@@ -42,7 +42,7 @@ export default new Vuex.Store({
             newPosts.push(doc.data());
           });
           commit("addPosts", newPosts);
-        });
+      });
     },
     setCurrentUser({ commit }, user) {
       commit("currentUser", user);
