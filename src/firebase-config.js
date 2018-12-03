@@ -5,6 +5,6 @@ const firebaseConfig = {
   projectId: "test-b00b5",
   storageBucket: "test-b00b5.appspot.com",
   messagingSenderId: "254925013096"
-};
+}
 
-export default firebaseConfig;
+export default firebaseConfig

@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from "firebase/app"
+import "firebase/auth"
 
 import Navigation from "@/components/Navigation.vue"
 export default {
@@ -16,15 +16,15 @@ export default {
     Navigation
   },
   created() {
-    this.$store.dispatch("getPosts");
-    this.watchLoggedUser();
+    this.$store.dispatch("getPosts")
+    this.watchLoggedUser()
   },
   methods: {
     watchLoggedUser() {
       firebase.auth().onAuthStateChanged(user => {
-        this.$store.dispatch("setCurrentUser", user);
-      });
+        this.$store.dispatch("setCurrentUser", user)
+      })
     }
   },
-};
+}
 </script>

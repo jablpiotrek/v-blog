@@ -52,8 +52,8 @@
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from "firebase/app"
+import "firebase/auth"
 
 export default {
   name: "Login",
@@ -62,11 +62,11 @@ export default {
       email: "",
       password: "",
       authError: {}
-    };
+    }
   },
   computed: {
     isUserLoggedIn() {
-      return !!this.$store.state.currentUser;
+      return !!this.$store.state.currentUser
     }
   },
   methods: {
@@ -75,23 +75,23 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
-          this.authError = null;
+          this.authError = null
         })
         .catch(error => {
-          this.authError = error;
-      });
+          this.authError = error
+        })
     },
     logOut() {
       firebase
         .auth()
         .signOut()
         .then(() => {
-          this.authError = null;
+          this.authError = null
         })
         .catch(error => {
-          this.authError = error;
-      });
+          this.authError = error
+        })
     }
   }
-};
+}
 </script>
