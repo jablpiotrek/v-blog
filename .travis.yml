@@ -4,7 +4,11 @@ node_js:
 
 stages: 
   - test
+  - build
+
 jobs:
   include:
     - stage: test
       script: yarn test:unit
+    - stage: build
+      script: yarn build
