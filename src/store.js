@@ -25,7 +25,7 @@ export default new Vuex.Store({
   },
   mutations: {
     addPosts(state, newPosts) {
-      state.posts = newPosts
+      state.posts = state.posts.concat(newPosts)
     },
     currentUser(state, user) {
       state.currentUser = user
@@ -34,7 +34,7 @@ export default new Vuex.Store({
   actions: {
     getPosts({ commit }) {
       firestore
-        .collection("posts")
+        .collection(firebaseConfig.postsCollection)
         .get()
         .then(response => {
           let newPosts = []
@@ -43,6 +43,13 @@ export default new Vuex.Store({
           })
           commit("addPosts", newPosts)
         })
+    },
+    addPost({ commit }, post) {
+      firestore.collection(firebaseConfig.postsCollection).add(post)
+        .then(() => {
+          commit('addPosts', [post])
+        })
+      
     },
     setCurrentUser({ commit }, user) {
       commit("currentUser", user)

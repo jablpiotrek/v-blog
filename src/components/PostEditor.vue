@@ -165,6 +165,12 @@ export default {
     EditorContent,
     EditorMenuBar,
   },
+  props: {
+    content: {
+      required: true,
+      type: Object
+    }
+  },
   data() {
     return {
       editor: new Editor({
@@ -188,14 +194,13 @@ export default {
           new Image()
         ],
         onUpdate: ({ getJSON, getHTML }) => {
-          this.content.json = getJSON()
-          this.content.html = getHTML()
-        }
-      }),
-      content: {
-        json: {},
-        html: ''
-      }
+          this.$emit('update:content', {
+            html: getHTML(),
+            json: getJSON()
+          })
+        },
+        content: this.content.html
+      })
     }
   },
   methods: {
@@ -204,8 +209,8 @@ export default {
       if (src !== null) {
         command({ src })
       }
-    },
-  },
+    }
+  }
 }
 </script>
 

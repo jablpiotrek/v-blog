@@ -4,7 +4,8 @@ const firebaseConfig = {
   databaseURL: "https://test-b00b5.firebaseio.com",
   projectId: "test-b00b5",
   storageBucket: "test-b00b5.appspot.com",
-  messagingSenderId: "254925013096"
+  messagingSenderId: "254925013096",
+  postsCollection: 'posts'
 }
 
 export default firebaseConfig
