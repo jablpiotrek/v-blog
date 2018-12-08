@@ -1,5 +1,15 @@
 <template>
   <div class="editor">
+    <label for="title">
+      Title: 
+    </label>
+
+    <input 
+      v-model="titleField"
+      type="text"
+      name="title"
+    >
+
     <editor-menu-bar :editor="editor">
       <div 
         slot-scope="{ commands, isActive }" 
@@ -136,6 +146,24 @@
       :editor="editor"
       class="editor__content" 
     />
+
+    <label for="author">
+      Author: 
+    </label>
+    <input 
+      v-model="authorField"
+      type="text" 
+      name="author"
+    >
+    <label for="publsihed">
+      Publish post automatically
+    </label>
+    <input 
+      v-model="publishedField"
+      type="checkbox" 
+      name="published" 
+    >
+
   </div>
 </template>
 <script>
@@ -169,6 +197,18 @@ export default {
     content: {
       required: true,
       type: Object
+    },
+    author: {
+      required: true,
+      type: String
+    },
+    title: {
+      required: true,
+      type: String
+    },
+    published: {
+      required: true,
+      type: Boolean
     }
   },
   data() {
@@ -200,7 +240,21 @@ export default {
           })
         },
         content: this.content.html
-      })
+      }),
+      authorField: '',
+      titleField: '',
+      publishedField: false
+    }
+  },
+  watch: {
+    authorField(value) {
+      this.$emit('update:author', value)
+    },
+    titleField(value) {
+      this.$emit('update:title', value)
+    },
+    publishedField(value) {
+      this.$emit('update:published', value)
     }
   },
   methods: {

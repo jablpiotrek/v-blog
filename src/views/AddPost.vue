@@ -3,25 +3,14 @@
     <h2>
       Add post
     </h2>
-    <label for="title">
-      Title: 
-    </label>
-    <input 
-      v-model="title"
-      type="text"
-      name="title"
-    >
+
     <PostEditor 
       :content.sync="content"
+      :author.sync="author"
+      :title.sync="title"
+      :published.sync="published"
     />
-    <label for="author">
-      Author: 
-    </label>
-    <input 
-      v-model="author"
-      type="text" 
-      name="author"
-    >
+
     <button
       type="button"
       @click="addPost"
@@ -34,6 +23,9 @@
 
 <script>
 import PostEditor from '../components/PostEditor.vue'
+
+const date = new Date()
+
 export default {
   name: "AddPost",
   components: {
@@ -44,16 +36,23 @@ export default {
       content: {
         json: {},
         html: ''
-      }
+      },
+      published: false,
+      author: '',
+      title: '',
+      date: `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`,
+      timestamp: date.getTime()
     }
   },
   methods: {
     addPost() {
-      console.log(this.content.html)
       this.$store.dispatch("addPost", {
         author: this.author,
         title: this.title,
-        content: this.content.html
+        content: this.content,
+        published: this.published,
+        date: this.date,
+        timestamp: this.timestamp
       })
     }
   }

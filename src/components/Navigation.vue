@@ -4,6 +4,9 @@
       <li>
         <router-link to="/">Home</router-link>
       </li>
+      <li>
+        <router-link to="/posts">Posts</router-link>
+      </li>
       <li v-if="this.$store.getters.isUserLoggedIn">
         <router-link to="add-post">Add Post</router-link>
       </li>

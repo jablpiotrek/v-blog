@@ -39,15 +39,23 @@ export default new Vuex.Store({
         .then(response => {
           let newPosts = []
           response.forEach(doc => {
-            newPosts.push(doc.data())
+            newPosts.push(
+              {
+                id: doc.id,
+                data: doc.data()
+              }
+            )
           })
           commit("addPosts", newPosts)
         })
     },
-    addPost({ commit }, post) {
+    addPost({ commit },post) {
       firestore.collection(firebaseConfig.postsCollection).add(post)
         .then(() => {
-          commit('addPosts', [post])
+          commit('addPosts', [{
+            data: post,
+            id: '' // TODO: add real firestore doc id here
+          }])
         })
       
     },
