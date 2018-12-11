@@ -1,20 +1,30 @@
 <template>
   <div id="app">
-    <hello-world 
-      subtitle="some text here"
-    />
+    <navigation />
+    <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import firebase from "firebase/app"
+import "firebase/auth"
+
+import Navigation from "@/components/Navigation.vue"
 export default {
   name: "App",
   components: {
-    HelloWorld
-  }
-};
+    Navigation
+  },
+  created() {
+    this.$store.dispatch("getPosts")
+    this.watchLoggedUser()
+  },
+  methods: {
+    watchLoggedUser() {
+      firebase.auth().onAuthStateChanged(user => {
+        this.$store.dispatch("setCurrentUser", user)
+      })
+    }
+  },
+}
 </script>
-
-<style scoped lang="scss">
-</style>

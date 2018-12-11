@@ -1,19 +1,44 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <p>Vue app with vue-cli 3</p>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <post
+      v-for="post in postsToShow"
+      :key="post.id"
+      :post-id="post.id"
+      :title="post.data.title"
+      :author="post.data.author"
+      :date="post.data.date"
+      :content="post.data.content"
+      :published="post.data.published"
+    />
+    <h3
+      v-if="!postsToShow.length"
+    >
+      There are no posts to show.
+    </h3>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+
+import Post from '../components/Post.vue'
 
 export default {
-  name: "home",
   components: {
-    HelloWorld
+    Post
+  },
+  computed: {
+    posts() {
+      return this.$store.state.posts
+    },
+    postsToShow() {
+      if (!this.$store.getters.isUserLoggedIn) {
+        return this.posts.filter((post) => {
+          return post.data.published
+        })
+      } else {
+        return this.posts
+      }
+    }
   }
-};
+}
 </script>

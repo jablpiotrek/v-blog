@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "lts/*"
+
+stages: 
+  - test
+  - name: build
+    if: branch = master
+
+jobs:
+  include:
+    - stage: test
+      script: yarn test:unit
+    - stage: build
+      script: yarn build
