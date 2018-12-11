@@ -4,7 +4,6 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import AddPost from './views/AddPost.vue'
-import Posts from './views/Posts.vue'
 
 Vue.use(Router)
 
@@ -24,11 +23,6 @@ export default new Router({
       path: '/add-post',
       name: 'add-post',
       component: AddPost
-    },
-    {
-      path: '/posts',
-      name: 'post',
-      component: Posts
     }
   ]
 })
