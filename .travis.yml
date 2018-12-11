@@ -4,7 +4,8 @@ node_js:
 
 stages: 
   - test
-  - build
+  - name: build
+    if: branch = master
 
 jobs:
   include:
