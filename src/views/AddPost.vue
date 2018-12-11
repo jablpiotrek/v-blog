@@ -27,7 +27,7 @@ import PostEditor from '../components/PostEditor.vue'
 const date = new Date()
 
 export default {
-  name: "AddPost",
+  name: 'AddPost',
   components: {
     PostEditor
   },
@@ -46,13 +46,13 @@ export default {
   },
   methods: {
     addPost() {
-      this.$store.dispatch("addPost", {
+      this.$store.dispatch('addPost', {
         author: this.author,
         title: this.title,
         content: this.content,
         published: this.published,
         date: this.date,
-        timestamp: this.timestamp
+        timestamp: this.timestamp,
       })
     }
   }

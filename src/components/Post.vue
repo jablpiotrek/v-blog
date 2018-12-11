@@ -10,6 +10,17 @@
     <p>
       {{ date }}
     </p>
+    <div v-if="isEditable">
+      <button>
+        Edit
+      </button>
+      <button
+        type="button"
+        @click="deletePost"
+      >
+        Delete
+      </button>
+    </div>
   </div>
 </template>
 
@@ -17,6 +28,10 @@
 export default {
   name: "Post",
   props: {
+    postId: {
+      type: String,
+      required: true
+    },
     author: {
       type: String,
       default: ''
@@ -39,6 +54,16 @@ export default {
       type: Boolean,
       default: false
     } 
+  },
+  computed: {
+    isEditable(){
+      return this.$store.getters.isUserLoggedIn
+    }
+  },
+  methods: {
+    deletePost() {
+      this.$store.dispatch('deletePost', this.postId)
+    }
   }
 }
 </script>

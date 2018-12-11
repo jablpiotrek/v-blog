@@ -17,7 +17,7 @@
         >
       </div>
       <div>
-        <label for="">Password</label>
+        <label for="password">Password</label>
         <input 
           v-model="password" 
           type="password" 
