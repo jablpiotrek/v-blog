@@ -7,11 +7,11 @@
     <p>
       {{ author }}
     </p>
-    <p>
-      {{ date }}
-    </p>
     <div v-if="isEditable">
-      <button>
+      <button
+        type="button"
+        @click="editPost"
+      >
         Edit
       </button>
       <button
@@ -46,10 +46,6 @@ export default {
         return {}
       }
     },
-    date: {
-      type: String,
-      default: ''
-    },
     published: {
       type: Boolean,
       default: false
@@ -63,6 +59,14 @@ export default {
   methods: {
     deletePost() {
       this.$store.dispatch('deletePost', this.postId)
+    },
+    editPost() {
+      this.$router.push({
+        name: 'edit-post', 
+        params: {
+          postId: this.postId
+        } 
+      })
     }
   }
 }
