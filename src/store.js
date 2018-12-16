@@ -28,6 +28,11 @@ export default new Vuex.Store({
   getters: {
     isUserLoggedIn(state) {
       return !!state.currentUser
+    },
+    postById(state) {
+      return id => state.posts.filter((post) => {
+        return post.id === id
+      })[0]
     }
   },
   mutations: {
@@ -69,6 +74,16 @@ export default new Vuex.Store({
             id: docRef.id
           }])
         })      
+    },
+    updatePost({ commit }, post) {
+      firestore.collection(firebaseConfig.postsCollection).doc(post.id).set(post.data)
+        .then(() => {
+          commit('deletePost', post.id)
+          commit('addPosts', [{
+            id: post.id,
+            data: post.data
+          }])
+        })
     },
     deletePost({ commit }, postId ){
       firestore.collection(firebaseConfig.postsCollection).doc(postId).delete()
