@@ -17,6 +17,8 @@ firestore.enablePersistence()
     console.log(`Offline data persistence unable to init due to error ${err.code}`)
   })
 
+const posts = firestore.collection(firebaseConfig.postsCollection)
+const publishedPosts = posts.where('published', '==', true)
 
 Vue.use(Vuex)
 
@@ -44,15 +46,18 @@ export default new Vuex.Store({
         return post.id !== postId
       })
     },
+    clearPosts(state) {
+      state.posts = []
+    },
     currentUser(state, user) {
       state.currentUser = user
     }
   },
   actions: {
-    getPosts({ commit }) {
-      firestore
-        .collection(firebaseConfig.postsCollection)
-        .get()
+    getPosts({ commit, getters }) {
+      const visiblePosts = getters.isUserLoggedIn ? posts : publishedPosts
+
+      visiblePosts.get()
         .then(response => {
           let newPosts = []
           response.forEach(doc => {
@@ -67,7 +72,7 @@ export default new Vuex.Store({
         })
     },
     addPost({ commit }, post) {
-      firestore.collection(firebaseConfig.postsCollection).add(post)
+      posts.add(post)
         .then((docRef) => {
           commit('addPosts', [{
             data: post,
@@ -76,7 +81,7 @@ export default new Vuex.Store({
         })      
     },
     updatePost({ commit }, post) {
-      firestore.collection(firebaseConfig.postsCollection).doc(post.id).set(post.data)
+      posts.doc(post.id).set(post.data)
         .then(() => {
           commit('deletePost', post.id)
           commit('addPosts', [{
@@ -86,7 +91,7 @@ export default new Vuex.Store({
         })
     },
     deletePost({ commit }, postId ){
-      firestore.collection(firebaseConfig.postsCollection).doc(postId).delete()
+      posts.doc(postId).delete()
         .then(() => {
           commit('deletePost', postId)
         })

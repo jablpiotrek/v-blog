@@ -1,7 +1,7 @@
 <template>
   <div>
     <post
-      v-for="post in postsToShow"
+      v-for="post in posts"
       :key="post.id"
       :post-id="post.id"
       :title="post.data.title"
@@ -11,7 +11,7 @@
       :published="post.data.published"
     />
     <h3
-      v-if="!postsToShow.length"
+      v-if="!posts.length"
     >
       There are no posts to show.
     </h3>
@@ -29,15 +29,6 @@ export default {
   computed: {
     posts() {
       return this.$store.state.posts
-    },
-    postsToShow() {
-      if (!this.$store.getters.isUserLoggedIn) {
-        return this.posts.filter((post) => {
-          return post.data.published
-        })
-      } else {
-        return this.posts
-      }
     }
   }
 }

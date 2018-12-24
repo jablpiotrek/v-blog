@@ -16,13 +16,14 @@ export default {
     Navigation
   },
   created() {
-    this.$store.dispatch("getPosts")
     this.watchLoggedUser()
   },
   methods: {
     watchLoggedUser() {
       firebase.auth().onAuthStateChanged(user => {
-        this.$store.dispatch("setCurrentUser", user)
+        this.$store.dispatch('setCurrentUser', user)
+        this.$store.commit('clearPosts')
+        this.$store.dispatch('getPosts')
       })
     }
   },
