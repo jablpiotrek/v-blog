@@ -7,11 +7,11 @@
     <p>
       {{ author }}
     </p>
-    <p>
-      {{ date }}
-    </p>
     <div v-if="isEditable">
-      <button>
+      <button
+        type="button"
+        @click="editPost"
+      >
         Edit
       </button>
       <button
@@ -46,10 +46,6 @@ export default {
         return {}
       }
     },
-    date: {
-      type: String,
-      default: ''
-    },
     published: {
       type: Boolean,
       default: false
@@ -58,11 +54,22 @@ export default {
   computed: {
     isEditable(){
       return this.$store.getters.isUserLoggedIn
+    },
+    postsDB(){
+      return this.$store.state.postsDB
     }
   },
   methods: {
     deletePost() {
-      this.$store.dispatch('deletePost', this.postId)
+      this.postsDB.doc(this.postId).delete()
+    },
+    editPost() {
+      this.$router.push({
+        name: 'edit-post', 
+        params: {
+          postId: this.postId
+        } 
+      })
     }
   }
 }

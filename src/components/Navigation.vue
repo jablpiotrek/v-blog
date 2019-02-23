@@ -2,13 +2,28 @@
   <div>
     <ul>
       <li>
-        <router-link to="/">Home</router-link>
+        <router-link 
+          to="/"
+          replace
+        >
+          Home
+        </router-link>
       </li>
       <li v-if="this.$store.getters.isUserLoggedIn">
-        <router-link to="add-post">Add Post</router-link>
+        <router-link 
+          to="/add-post" 
+          replace
+        >
+          Add Post
+        </router-link>
       </li>
       <li>
-        <router-link to="login">Login</router-link>
+        <router-link 
+          to="/login"
+          replace
+        >
+          Login
+        </router-link>
       </li>
     </ul>
   </div>

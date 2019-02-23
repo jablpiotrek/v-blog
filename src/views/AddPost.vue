@@ -13,7 +13,7 @@
 
     <button
       type="button"
-      @click="addPost"
+      @click="submit"
     >
       Submit post
     </button>
@@ -24,10 +24,7 @@
 <script>
 import PostEditor from '../components/PostEditor.vue'
 
-const date = new Date()
-
 export default {
-  name: 'AddPost',
   components: {
     PostEditor
   },
@@ -39,20 +36,27 @@ export default {
       },
       published: false,
       author: '',
-      title: '',
-      date: `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`,
-      timestamp: date.getTime()
+      title: ''
+    }
+  },
+  computed: {
+    postsDB() {
+      return this.$store.state.postsDB
+    },
+    post() {
+      return {
+        author: this.author,
+        content: this.content,
+        published: this.published,
+        title: this.title
+      }
     }
   },
   methods: {
-    addPost() {
-      this.$store.dispatch('addPost', {
-        author: this.author,
-        title: this.title,
-        content: this.content,
-        published: this.published,
-        date: this.date,
-        timestamp: this.timestamp,
+    async submit() {
+      await this.postsDB.add(this.post)
+      this.$router.push({
+        name: 'home'
       })
     }
   }

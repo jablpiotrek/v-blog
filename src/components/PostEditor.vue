@@ -241,9 +241,9 @@ export default {
         },
         content: this.content.html
       }),
-      authorField: '',
-      titleField: '',
-      publishedField: false
+      authorField: this.author,
+      titleField: this.title,
+      publishedField: this.published 
     }
   },
   watch: {

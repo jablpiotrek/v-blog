@@ -17,64 +17,46 @@ firestore.enablePersistence()
     console.log(`Offline data persistence unable to init due to error ${err.code}`)
   })
 
+const postsDB = firestore.collection(firebaseConfig.postsCollection)
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    postsDB,
     posts: [],
     currentUser: null
   },
   getters: {
     isUserLoggedIn(state) {
       return !!state.currentUser
+    },
+    postById(state) {
+      return id => state.posts.filter((post) => {
+        return post.id === id
+      })[0]
     }
   },
   mutations: {
-    addPosts(state, newPosts) {
-      state.posts = state.posts.concat(newPosts)
-    },
-    deletePost(state, postId) {
-      state.posts = state.posts.filter((post) => {
-        return post.id !== postId
-      })
+    updatePosts(state, posts){
+      state.posts = posts
     },
     currentUser(state, user) {
       state.currentUser = user
     }
   },
   actions: {
-    getPosts({ commit }) {
-      firestore
-        .collection(firebaseConfig.postsCollection)
-        .get()
-        .then(response => {
-          let newPosts = []
-          response.forEach(doc => {
-            newPosts.push(
-              {
-                id: doc.id,
-                data: doc.data()
-              }
-            )
+    watchPosts({ commit }){
+      postsDB.onSnapshot(response => {
+        let posts = [] 
+        response.forEach(post => {
+          posts.push({
+            id: post.id,
+            data: post.data()
           })
-          commit('addPosts', newPosts)
-        })
-    },
-    addPost({ commit }, post) {
-      firestore.collection(firebaseConfig.postsCollection).add(post)
-        .then((docRef) => {
-          commit('addPosts', [{
-            data: post,
-            id: docRef.id
-          }])
         })      
-    },
-    deletePost({ commit }, postId ){
-      firestore.collection(firebaseConfig.postsCollection).doc(postId).delete()
-        .then(() => {
-          commit('deletePost', postId)
-        })
+        commit('updatePosts', posts)
+      })
     },
     setCurrentUser({ commit }, user) {
       commit('currentUser', user)
