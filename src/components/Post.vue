@@ -54,11 +54,14 @@ export default {
   computed: {
     isEditable(){
       return this.$store.getters.isUserLoggedIn
+    },
+    postsDB(){
+      return this.$store.state.postsDB
     }
   },
   methods: {
     deletePost() {
-      this.$store.dispatch('deletePost', this.postId)
+      this.postsDB.doc(this.postId).delete()
     },
     editPost() {
       this.$router.push({

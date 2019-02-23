@@ -34,19 +34,14 @@ export default {
     },
     post() {
       return this.$store.getters.postById(this.id).data
+    },
+    postsDB() {
+      return this.$store.state.postsDB
     }
   },
   methods: {
     async submit() {
-      await this.$store.dispatch('updatePost', {
-        id: this.id,
-        data: {
-          author: this.post.author,
-          title: this.post.title,
-          content: this.post.content,
-          published: this.post.published
-        }
-      })
+      await this.postsDB.doc(this.id).set(this.post)
       this.$router.push({
         name: 'home'
       })

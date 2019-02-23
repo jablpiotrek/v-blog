@@ -17,13 +17,12 @@ export default {
   },
   created() {
     this.watchLoggedUser()
+    this.$store.dispatch('watchPosts')
   },
   methods: {
     watchLoggedUser() {
       firebase.auth().onAuthStateChanged(user => {
         this.$store.dispatch('setCurrentUser', user)
-        this.$store.commit('clearPosts')
-        this.$store.dispatch('getPosts')
       })
     }
   },

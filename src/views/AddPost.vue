@@ -39,14 +39,22 @@ export default {
       title: ''
     }
   },
+  computed: {
+    postsDB() {
+      return this.$store.state.postsDB
+    },
+    post() {
+      return {
+        author: this.author,
+        content: this.content,
+        published: this.published,
+        title: this.title
+      }
+    }
+  },
   methods: {
     async submit() {
-      await this.$store.dispatch('addPost', {
-        author: this.author,
-        title: this.title,
-        content: this.content,
-        published: this.published
-      })
+      await this.postsDB.add(this.post)
       this.$router.push({
         name: 'home'
       })
