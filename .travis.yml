@@ -1,15 +1,16 @@
 language: node_js
 node_js:
-  - "lts/*"
-
-stages: 
-  - test
-  - name: build
-    if: branch = master
-
+- lts/*
+stages:
+- test
+- name: build
+  if: branch = master
 jobs:
   include:
-    - stage: test
-      script: yarn test:unit
-    - stage: build
-      script: yarn build
+  - stage: test
+    script: yarn test:unit
+  - stage: build
+    script: yarn build
+env:
+  global:
+    secure: tpa8wDjf8OusbnPjD2Jd7lwX3mACMB08WzlRQoXL+gCAecRDCaK9sb1zAYCdvfHrtP7xgvDjJVYcIJ0szpuBJS6q1GAWqfv6OmQzJASekMHGjGf+9V2LuGiWB6WR+vl3NhHlXBrGeBSL+VEGUtOYFFEwSUJaFi4xdbadLW8So45QA+2/cl1cH2KrdKaOOUYOHw4dHcLj0wa/fEpCidEa/i+zfcCyuWbNbnnFMcalQwE/K4QELWKTd4NSNJ+HeXZbZSm7mah2kf7zWYU+tf+L+ahWew05j+Mxu4afP/s0iXjPbGoSjqlEP70YxQgouVW2wYGk9O1IVk411GeeGE9AK1RApT/hJvpqENNbvAT/xTyv7CYtPThaxTcRoFq9Bw6YkVC6dDaAo7b2uQIWWVhhjthYHmt+OfRW7WJ9IvqkjAaG+5IXqUBa83oui4Y6+tCm/pTvlrKe3+ePcsKdYJt3Z4d1NpssjwyBTXvCV1X0DcajRcaUmNOLTN/WaCeU49mn73uq8LVj4MfWtnCKOAJGh+yEHg8EHOfKGijKgJ8YmupH/a8cf6s9zgRvtWTK51rek4HXrg82Y+4xZ13gL5840z8R5jFzYU2+kEsyDWkcS/gi53+2FFQH4PWxNw4MyIvps8fRk2qb3YVhF/8j8b88LCPgPIhVbfvV9rl1Fokc8M4=
