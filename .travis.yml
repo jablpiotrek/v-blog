@@ -11,6 +11,12 @@ jobs:
     script: yarn test:unit
   - stage: build
     script: yarn build
+
 env:
   global:
     secure: Vva68dK0tnJCAYV65mKIFj8Yr3mvqBm8ZZwL9JQ7OA5Ra3+pogdZgoC/Ad01PDB61SaJPti7iZhLxmWgtciy1Q5/Er0jdwDTB4/S03wHFpZCbE33YCm1Xk+VsgBIh+bMmkJTnzJSZNxPrLWbkgtWolFG37fpdlh4v7TkswcFIGhxguzJ4avsmBMVsOOr4LjQwqyXAxQ8osuN6PftvWLcYZKqfRAEYoz5bZPRT5rbt01O5cOx5Kamc9+TjFIsRdME/Pj/z2P/2acVp79nqe/6fLYuzUu5EjFIx9U0E0jhZkoCbl6B0nKelvFx+taNCu8Sm+Aq8ayUA60IvMoV7WgEok5OYh6KHoST12qqb9elTS6+8pNkVENm8OAh2ODqROumX9huL584R/kt3zJV22e/HMuTvDY9PtA8CT3L9LhGyqejz2rsfMnfcaAFaKp5rWHDIJN0oRy75agotRzhmp00T58Ks0pa9Pwl/YzILOc+nam4saYcS7u5Sfetd96AZzm0nsfend9NnQjSWEWgEHxlA8I7nmnw2y/X4Fs0q7lI+cy2U5/qwNH7H6dYPWN9pAFqz6xMy8TehN1Wn1If1AplikgHWIsSbuxab0nzzhfthcIKmSZ9Puo3j+76c7yvvYYroS/C50l8P7C8bATMlwqNN3yQVy31291nnQGUZ7LZdbA=
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_7a9e8feb31e6_key -iv $encrypted_7a9e8feb31e6_iv
+  -in deploy_key.enc -out ./deploy_key -d
+- ssh-add ./deploy_key
