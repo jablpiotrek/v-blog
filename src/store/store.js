@@ -4,8 +4,8 @@ import Vuex from 'vuex'
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 
-import firebaseConfig from './firebase-config'
-import firestoreSettings from './firestore-settings'
+import firebaseConfig from '../firebase-config'
+import firestoreSettings from '../firestore-settings'
 
 firebase.initializeApp(firebaseConfig)
 const firestore = firebase.firestore()
