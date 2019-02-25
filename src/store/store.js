@@ -22,8 +22,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     postsDB: firestore.collection(firebaseConfig.postsCollection),
+    publishedPostsDB: firestore.collection(firebaseConfig.postsCollection).where('published', '==', true),
     posts: [],
-    currentUser: null
+    currentUser: null,
+    postsListener: null
   },
   actions,
   mutations,
