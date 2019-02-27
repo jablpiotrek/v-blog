@@ -13,11 +13,27 @@
     <p> 
       {{ author }} 
     </p>
+    <button
+      type="button"
+      @click="back"
+    >
+      Go to posts list
+    </button>
+    <post-control-buttons
+      v-if="isEditable"
+      :post-id="postId"
+    />
   </div>
 </template>
 
 <script>
+import PostControlButtons from './PostControlButtons.vue'
+
 export default {
+  name: 'Post',
+  components: {
+    PostControlButtons
+  },
   props: {
     postId: {
       type: String,
@@ -49,7 +65,16 @@ export default {
       type: String,
       default: ''
     } 
-
+  },
+  computed: {
+    isEditable(){
+      return this.$store.getters.isUserLoggedIn
+    }
+  },
+  methods: {
+    back() {
+      this.$router.push('/')
+    }
   }
 }
 </script>

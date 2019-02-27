@@ -14,27 +14,21 @@
     >
       Go to post
     </button>
-    <div v-if="isEditable">
-      <button
-        type="button"
-        @click="editPost"
-      >
-        Edit
-      </button>
-
-      <button
-        type="button"
-        @click="deletePost"
-      >
-        Delete
-      </button>
-    </div>
+    <post-control-buttons
+      v-if="isEditable"
+      :post-id="postId"
+    />
   </div>
 </template>
 
 <script>
+import PostControlButtons from './PostControlButtons.vue'
+
 export default {
-  name: "Post",
+  name: "PostThumbnail",
+  components: {
+    PostControlButtons
+  },
   props: {
     postId: {
       type: String,
@@ -56,26 +50,12 @@ export default {
   computed: {
     isEditable(){
       return this.$store.getters.isUserLoggedIn
-    },
-    postsDB(){
-      return this.$store.state.postsDB
     }
   },
   methods: {
     openPost() {
       this.$router.push({
         name: 'post', 
-        params: {
-          postId: this.postId
-        } 
-      })
-    },
-    deletePost() {
-      this.postsDB.doc(this.postId).delete()
-    },
-    editPost() {
-      this.$router.push({
-        name: 'edit-post', 
         params: {
           postId: this.postId
         } 
