@@ -10,13 +10,21 @@
       :author.sync="post.author"
       :title.sync="post.title"
       :published.sync="post.published"
+      :abstract.sync="post.abstract"
     />
 
     <button
       type="button"
       @click="submit"
     >
-      Submit post
+      Save post
+    </button>
+
+    <button
+      type="button"
+      @click="close"
+    >
+      Close
     </button>
   </div>
 </template>
@@ -42,6 +50,11 @@ export default {
   methods: {
     async submit() {
       await this.postsDB.doc(this.id).set(this.post)
+      this.$router.push({
+        name: 'home'
+      })
+    },
+    close() {
       this.$router.push({
         name: 'home'
       })

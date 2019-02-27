@@ -10,6 +10,16 @@
       name="title"
     >
 
+    <label for="abstract">
+      Abstract:
+    </label>
+
+    <textarea
+      v-model="abstractField"
+      type="text"
+      name="abstract"
+    />
+
     <editor-menu-bar :editor="editor">
       <div 
         slot-scope="{ commands, isActive }" 
@@ -243,7 +253,8 @@ export default {
       }),
       authorField: this.author,
       titleField: this.title,
-      publishedField: this.published 
+      publishedField: this.published ,
+      abstractField: this.abstract
     }
   },
   watch: {
@@ -255,6 +266,9 @@ export default {
     },
     publishedField(value) {
       this.$emit('update:published', value)
+    },
+    abstractField(value) {
+      this.$emit('update:abstract', value)
     }
   },
   methods: {

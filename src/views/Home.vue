@@ -1,14 +1,13 @@
 <template>
   <div>
-    <post
+    <post-thumbnail
       v-for="post in posts"
       :key="post.id"
       :post-id="post.id"
       :title="post.data.title"
-      :author="post.data.author"
       :date="post.data.date"
-      :content="post.data.content"
       :published="post.data.published"
+      :abstract="post.data.abstract"
     />
     <h3
       v-if="!posts.length"
@@ -20,11 +19,11 @@
 
 <script>
 
-import Post from '../components/Post.vue'
+import PostThumbnail from '../components/PostThumbnail.vue'
 
 export default {
   components: {
-    Post
+    PostThumbnail
   },
   computed: {
     posts() {

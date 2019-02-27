@@ -3,42 +3,41 @@
     <h3>
       {{ title }}
     </h3>
-    <div v-html="content.html" />
     <p>
-      {{ author }}
+      {{ date }}
     </p>
-    <div v-if="isEditable">
-      <button
-        type="button"
-        @click="editPost"
-      >
-        Edit
-      </button>
-      <button
-        type="button"
-        @click="deletePost"
-      >
-        Delete
-      </button>
-    </div>
+    <p>
+      {{ abstract }}
+    </p>
+    <div v-html="content.html" />
+    <p> 
+      {{ author }} 
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Post",
   props: {
     postId: {
       type: String,
       required: true
     },
-    author: {
-      type: String,
-      default: ''
-    },
     title: {
       type: String,
       default: ''
+    },
+    abstract: {
+      type: String,
+      default: ''
+    },
+    author: {
+      type: String,
+      default: ''
+    }, 
+    published: {
+      type: Boolean,
+      default: false
     },
     content: {
       type: Object,
@@ -46,31 +45,11 @@ export default {
         return {}
       }
     },
-    published: {
-      type: Boolean,
-      default: false
+    date: {
+      type: String,
+      default: ''
     } 
-  },
-  computed: {
-    isEditable(){
-      return this.$store.getters.isUserLoggedIn
-    },
-    postsDB(){
-      return this.$store.state.postsDB
-    }
-  },
-  methods: {
-    deletePost() {
-      this.postsDB.doc(this.postId).delete()
-    },
-    editPost() {
-      this.$router.push({
-        name: 'edit-post', 
-        params: {
-          postId: this.postId
-        } 
-      })
-    }
+
   }
 }
 </script>
