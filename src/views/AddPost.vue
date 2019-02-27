@@ -9,6 +9,7 @@
       :author.sync="author"
       :title.sync="title"
       :published.sync="published"
+      :abstract.sync="abstract"
     />
 
     <button
@@ -36,7 +37,8 @@ export default {
       },
       published: false,
       author: '',
-      title: ''
+      title: '',
+      abstract: ''
     }
   },
   computed: {
@@ -48,7 +50,8 @@ export default {
         author: this.author,
         content: this.content,
         published: this.published,
-        title: this.title
+        title: this.title,
+        abstract: this.abstract
       }
     }
   },

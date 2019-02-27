@@ -3,21 +3,16 @@
     <h3>
       {{ title }}
     </h3>
-    <p>
-      {{ date }}
-    </p>
+
     <p>
       {{ abstract }}
     </p>
-    <div v-html="content.html" />
-    <p> 
-      {{ author }} 
-    </p>
+ 
     <button
       type="button"
-      @click="back"
+      @click="openPost"
     >
-      Go to posts list
+      Go to post
     </button>
     <post-control-buttons
       v-if="isEditable"
@@ -30,7 +25,7 @@
 import PostControlButtons from './PostControlButtons.vue'
 
 export default {
-  name: 'Post',
+  name: "PostThumbnail",
   components: {
     PostControlButtons
   },
@@ -47,23 +42,9 @@ export default {
       type: String,
       default: ''
     },
-    author: {
-      type: String,
-      default: ''
-    }, 
     published: {
       type: Boolean,
       default: false
-    },
-    content: {
-      type: Object,
-      default() {
-        return {}
-      }
-    },
-    date: {
-      type: String,
-      default: ''
     } 
   },
   computed: {
@@ -72,8 +53,13 @@ export default {
     }
   },
   methods: {
-    back() {
-      this.$router.push('/')
+    openPost() {
+      this.$router.push({
+        name: 'post', 
+        params: {
+          postId: this.postId
+        } 
+      })
     }
   }
 }
