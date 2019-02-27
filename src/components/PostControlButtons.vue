@@ -33,6 +33,7 @@ export default {
   methods: {
     deletePost() {
       this.postsDB.doc(this.postId).delete()
+      this.$router.push('/')
     },
     editPost() {
       this.$router.push({
