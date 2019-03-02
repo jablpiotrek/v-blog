@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home">
     <post-thumbnail
       v-for="post in posts"
       :key="post.id"
