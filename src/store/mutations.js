@@ -10,9 +10,6 @@ const mutations = {
   },
   setPublishedPostsDB(state, db){
     state.publishedPostsDB = db
-  },
-  mainContentReady(state) {
-    state.mainContentReady = true
   }
 }
 
