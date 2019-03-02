@@ -1,25 +1,27 @@
 <template>
   <div id="app">
     <navigation />
-    <router-view />
+    <main-content />
+    <loading v-if="isLoading" />
   </div>
 </template>
 
 <script>
-import firebase from "firebase/app"
-import "firebase/auth"
 
-import Navigation from "@/components/Navigation.vue"
+import Navigation from './components/Navigation.vue'
+import Loading from './components/Loading.vue'
+
 export default {
   name: "App",
   components: {
-    Navigation
+    Navigation,
+    Loading,
+    MainContent: () => import( './components/MainContent.vue')
   },
-  created() {
-    firebase.auth().onAuthStateChanged(user => {
-      this.$store.dispatch('setCurrentUser', user)
-      this.$store.dispatch('watchPosts')
-    })
+  computed: {
+    isLoading() {
+      return !this.$store.state.mainContentReady
+    }
   }
 }
 </script>
