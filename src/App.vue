@@ -2,7 +2,6 @@
   <div id="app">
     <navigation />
     <main-content />
-    <loading v-if="isLoading" />
   </div>
 </template>
 
@@ -11,17 +10,16 @@
 import Navigation from './components/Navigation.vue'
 import Loading from './components/Loading.vue'
 
+const MainContent = () => ({
+  component: import('./components/MainContent.vue'),
+  loading: Loading
+})
+
 export default {
   name: "App",
   components: {
     Navigation,
-    Loading,
-    MainContent: () => import( './components/MainContent.vue')
-  },
-  computed: {
-    isLoading() {
-      return !this.$store.state.mainContentReady
-    }
+    MainContent
   }
 }
 </script>
