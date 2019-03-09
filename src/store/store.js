@@ -5,8 +5,6 @@ import actions from './actions'
 import mutations from './mutations'
 import getters from './getters'
 
-
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -15,8 +13,7 @@ export default new Vuex.Store({
     publishedPostsDB: null,
     posts: [],
     currentUser: null,
-    postsListener: null,
-    mainContentReady: false
+    postsListener: null
   },
   actions,
   mutations,
