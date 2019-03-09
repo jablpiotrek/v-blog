@@ -9,21 +9,20 @@
       :published="post.data.published"
       :abstract="post.data.abstract"
     />
-    <h3
-      v-if="!posts.length"
-    >
-      There are no posts to show.
-    </h3>
+
+    <post-placeholder v-if="!posts.length" />
   </div>
 </template>
 
 <script>
 
 import PostThumbnail from '../components/PostThumbnail.vue'
+import PostPlaceholder from '../components/PostPlaceholder.vue'
 
 export default {
   components: {
-    PostThumbnail
+    PostThumbnail,
+    PostPlaceholder
   },
   computed: {
     posts() {
