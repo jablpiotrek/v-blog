@@ -7,12 +7,15 @@
 
 <script>
 
-import Navigation from './components/Navigation.vue'
 import Loading from './components/Loading.vue'
 
 const MainContent = () => ({
   component: import('./components/MainContent.vue'),
-  loading: Loading
+  loading: Loading,
+  delay: 200
+})
+const Navigation = () => ({
+  component: import('./components/Navigation.vue'),
 })
 
 export default {

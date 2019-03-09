@@ -29,9 +29,6 @@ export default {
       this.$store.dispatch('setCurrentUser', user)
       this.$store.dispatch('watchPosts')
     })
-  },
-  mounted(){
-    this.$store.commit('mainContentReady')
   }
 }
 </script>
