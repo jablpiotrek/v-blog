@@ -1,5 +1,6 @@
 <template>
   <div id="content">
+    <navigation />
     <router-view />
   </div>
 </template>
@@ -12,8 +13,13 @@ import firebase from "firebase/app"
 import "firebase/auth"
 import 'firebase/firestore'
 
+import Navigation from './Navigation.vue'
+
 export default {
   name: 'MainContent',
+  components: {
+    Navigation
+  },
   created() {
     // init firebase app with config
     firebase.initializeApp(firebaseConfig)
