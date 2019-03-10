@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <navigation />
+
     <main-content />
   </div>
 </template>
@@ -12,16 +12,12 @@ import Loading from './components/Loading.vue'
 const MainContent = () => ({
   component: import('./components/MainContent.vue'),
   loading: Loading,
-  delay: 200
-})
-const Navigation = () => ({
-  component: import('./components/Navigation.vue'),
+  delay: 20
 })
 
 export default {
   name: "App",
   components: {
-    Navigation,
     MainContent
   }
 }
