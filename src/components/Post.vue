@@ -6,9 +6,6 @@
     <p>
       {{ date }}
     </p>
-    <p>
-      {{ abstract }}
-    </p>
     <div v-html="content.html" />
     <p> 
       {{ author }} 
@@ -40,10 +37,6 @@ export default {
       required: true
     },
     title: {
-      type: String,
-      default: ''
-    },
-    abstract: {
       type: String,
       default: ''
     },

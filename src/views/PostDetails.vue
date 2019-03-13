@@ -6,7 +6,6 @@
       :title="post.data.title"
       :date="post.data.date"
       :published="post.data.published"
-      :abstract="post.data.abstract"
       :content="post.data.content"
       :author="post.data.author"
     />
