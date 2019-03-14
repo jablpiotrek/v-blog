@@ -1,6 +1,6 @@
 <template>
   <div id="post-placeholder">
-    <h1>No posts to display</h1>
+    <h1>Dummy post placeholder</h1>
   </div>
 </template>
 
