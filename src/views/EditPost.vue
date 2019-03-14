@@ -31,11 +31,12 @@
 
 <script>
 import PostEditor from '../components/PostEditor.vue'
-
+import time from '../mixins/time'
 export default {
   components: {
     PostEditor
   },
+  mixins: [time],
   computed: {
     id() {
       return this.$route.params.postId
@@ -49,6 +50,7 @@ export default {
   },
   methods: {
     async submit() {
+      this.post.editTime = this.time()
       await this.postsDB.doc(this.id).set(this.post)
       this.$router.push({
         name: 'home'
