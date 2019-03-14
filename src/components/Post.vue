@@ -10,6 +10,9 @@
     <p> 
       {{ author }} 
     </p>
+    <p>
+      {{ editTime }}
+    </p>
     <button
       type="button"
       @click="back"
@@ -54,7 +57,7 @@ export default {
         return {}
       }
     },
-    date: {
+    editTime: {
       type: String,
       default: ''
     } 
