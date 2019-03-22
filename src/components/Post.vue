@@ -3,15 +3,12 @@
     <h3>
       {{ title }}
     </h3>
-    <p>
-      {{ date }}
-    </p>
-    <p>
-      {{ abstract }}
-    </p>
     <div v-html="content.html" />
     <p> 
       {{ author }} 
+    </p>
+    <p>
+      {{ editTime }}
     </p>
     <button
       type="button"
@@ -27,6 +24,7 @@
 </template>
 
 <script>
+import 'highlight.js/styles/dracula.css'
 import PostControlButtons from './PostControlButtons.vue'
 
 export default {
@@ -40,10 +38,6 @@ export default {
       required: true
     },
     title: {
-      type: String,
-      default: ''
-    },
-    abstract: {
       type: String,
       default: ''
     },
@@ -61,7 +55,7 @@ export default {
         return {}
       }
     },
-    date: {
+    editTime: {
       type: String,
       default: ''
     } 
@@ -71,9 +65,21 @@ export default {
       return this.$store.getters.isUserLoggedIn
     }
   },
+  async mounted() {
+    const codeBlocks = document.querySelectorAll('code')
+    if (codeBlocks.length) {
+      this.higlightCode(codeBlocks)
+    }
+  },
   methods: {
     back() {
       this.$router.push('/')
+    },
+    async higlightCode(codeBlocks) {
+      const hljs = await import ('highlight.js')
+      codeBlocks.forEach(block => {
+        hljs.highlightBlock(block)
+      })
     }
   }
 }

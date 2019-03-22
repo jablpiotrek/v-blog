@@ -4,9 +4,8 @@
       v-if="post"
       :post-id="id"
       :title="post.data.title"
-      :date="post.data.date"
+      :edit-time="post.data.editTime"
       :published="post.data.published"
-      :abstract="post.data.abstract"
       :content="post.data.content"
       :author="post.data.author"
     />
