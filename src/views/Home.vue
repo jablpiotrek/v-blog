@@ -5,7 +5,7 @@
       :key="post.id"
       :post-id="post.id"
       :title="post.data.title"
-      :date="post.data.date"
+      :edit-time="post.data.editTime"
       :published="post.data.published"
       :abstract="post.data.abstract"
     />
