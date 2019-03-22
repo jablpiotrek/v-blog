@@ -3,7 +3,7 @@
     <h3>
       {{ title }}
     </h3>
-    <div v-html="content.html" />
+    <div v-html="html" />
     <p> 
       {{ author }} 
     </p>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import 'highlight.js/styles/dracula.css'
+import 'highlight.js/styles/monokai-sublime.css'
 import PostControlButtons from './PostControlButtons.vue'
 
 export default {
@@ -49,11 +49,9 @@ export default {
       type: Boolean,
       default: false
     },
-    content: {
-      type: Object,
-      default() {
-        return {}
-      }
+    html: {
+      type: String,
+      default: ''
     },
     editTime: {
       type: String,

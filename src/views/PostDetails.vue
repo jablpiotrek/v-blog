@@ -6,7 +6,7 @@
       :title="post.data.title"
       :edit-time="post.data.editTime"
       :published="post.data.published"
-      :content="post.data.content"
+      :html="post.data.html"
       :author="post.data.author"
     />
   </div>

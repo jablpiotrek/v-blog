@@ -5,7 +5,7 @@
     </h2>
 
     <PostEditor 
-      :content.sync="content"
+      :html.sync="html"
       :author.sync="author"
       :title.sync="title"
       :published.sync="published"
@@ -33,10 +33,7 @@ export default {
   mixins: [time],
   data() {
     return {
-      content: {
-        json: {},
-        html: ''
-      },
+      html:'',
       published: false,
       author: '',
       title: '',
@@ -51,7 +48,7 @@ export default {
     post() {
       return {
         author: this.author,
-        content: this.content,
+        html: this.html,
         published: this.published,
         title: this.title,
         abstract: this.abstract,
