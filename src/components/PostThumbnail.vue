@@ -7,6 +7,10 @@
     <p>
       {{ abstract }}
     </p>
+
+    <p>
+      {{ editTime }}
+    </p>
  
     <button
       type="button"
@@ -45,6 +49,10 @@ export default {
     published: {
       type: Boolean,
       default: false
+    },
+    editTime: {
+      type: String,
+      default: ''
     } 
   },
   computed: {
