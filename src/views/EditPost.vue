@@ -6,7 +6,7 @@
 
     <PostEditor 
       v-if="post"
-      :content.sync="post.content"
+      :html.sync="post.html"
       :author.sync="post.author"
       :title.sync="post.title"
       :published.sync="post.published"
