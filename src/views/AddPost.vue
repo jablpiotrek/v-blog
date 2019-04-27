@@ -53,7 +53,6 @@ export default {
         title: this.title,
         abstract: this.abstract,
         editTime: this.editTime,
-        abstract: this.abstract
       }
     }
   },
