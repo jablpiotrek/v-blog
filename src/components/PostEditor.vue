@@ -49,11 +49,23 @@
       type="checkbox" 
       name="published" 
     >
+    <post
+      post-id="post-previev" 
+      :title="title"
+      :html="html"
+      :author="author"
+      :display-controls="false"
+    />
   </div>
 </template>
 <script>
+import Post from './Post.vue'
 
 export default {
+  name: 'PostEditor',
+  components: {
+    Post
+  },
   props: {
     html: {
       required: true,
@@ -64,6 +76,10 @@ export default {
       type: String
     },
     title: {
+      required: true,
+      type: String
+    },
+    abstract: {
       required: true,
       type: String
     },
@@ -96,14 +112,6 @@ export default {
     },
     htmlField(value) {
       this.$emit('update:html', value)
-    }
-  },
-  methods: {
-    showImagePrompt(command) {
-      const src = prompt('Enter the url of your image here')
-      if (src !== null) {
-        command({ src })
-      }
     }
   }
 }

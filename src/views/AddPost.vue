@@ -52,7 +52,8 @@ export default {
         published: this.published,
         title: this.title,
         abstract: this.abstract,
-        editTime: this.editTime
+        editTime: this.editTime,
+        abstract: this.abstract
       }
     }
   },

@@ -17,7 +17,7 @@
       Go to posts list
     </button>
     <post-control-buttons
-      v-if="isEditable"
+      v-if="isEditable && displayControls"
       :post-id="postId"
     />
   </div>
@@ -25,6 +25,7 @@
 
 <script>
 import 'highlight.js/styles/monokai-sublime.css'
+
 import PostControlButtons from './PostControlButtons.vue'
 
 export default {
@@ -56,6 +57,10 @@ export default {
     editTime: {
       type: String,
       default: ''
+    },
+    displayControls: {
+      type: Boolean,
+      default: true
     } 
   },
   computed: {
@@ -63,21 +68,25 @@ export default {
       return this.$store.getters.isUserLoggedIn
     }
   },
-  async mounted() {
-    const codeBlocks = document.querySelectorAll('code')
-    if (codeBlocks.length) {
-      this.higlightCode(codeBlocks)
-    }
+  mounted() {
+    this.higlightCode()
+  },
+  updated() {
+    this.higlightCode()
   },
   methods: {
     back() {
       this.$router.push('/')
     },
-    async higlightCode(codeBlocks) {
-      const hljs = await import ('highlight.js')
-      codeBlocks.forEach(block => {
-        hljs.highlightBlock(block)
-      })
+    async higlightCode() {
+      const codeBlocks = document.querySelectorAll('code')
+
+      if (codeBlocks.length) {
+        const hljs = await import ('highlight.js')
+        codeBlocks.forEach(block => {
+          hljs.highlightBlock(block)
+        })
+      }
     }
   }
 }
