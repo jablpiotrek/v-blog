@@ -1,7 +1,7 @@
 <template>
   <div class="loading">
     <loader 
-      :class="['loading__spinner', `loading__spinner--${size}`]" 
+      class="loading__spinner"
     />
   </div>
 </template>
