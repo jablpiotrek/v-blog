@@ -27,6 +27,7 @@ import PostEditor from '../components/PostEditor.vue'
 import time from '../mixins/time'
 
 export default {
+  name: 'AddPost',
   components: {
     PostEditor
   },
@@ -52,14 +53,20 @@ export default {
         published: this.published,
         title: this.title,
         abstract: this.abstract,
-        editTime: this.editTime,
+        editTime: this.editTime
       }
+    },
+    docId() {
+      const title = this.post.title
+      const reg = /[^a-zA-Z\d]/g
+      const titleId = title.replace(reg, '-')
+      return `${Math.random().toString(36).substr(2, 8)}-${titleId}`
     }
   },
   methods: {
     async submit() {
       this.editTime = this.time()
-      await this.postsDB.add(this.post)
+      await this.postsDB.doc(this.docId).set(this.post)
       this.$router.push({
         name: 'home'
       })
