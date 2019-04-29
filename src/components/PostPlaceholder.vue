@@ -1,11 +1,18 @@
 <template>
-  <div id="post-placeholder">
-    <h1>Dummy post placeholder</h1>
+  <div class="post-placeholder">
+    <list-loader />
   </div>
 </template>
 
 <script>
+import {
+  ListLoader
+} from 'vue-content-loader'
+
 export default {
-  name: 'PostPlaceholder'
+  name: 'PostPlaceholder',
+  components: {
+    ListLoader
+  }
 }
 </script>

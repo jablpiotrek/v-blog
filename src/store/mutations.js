@@ -10,6 +10,9 @@ const mutations = {
   },
   setPublishedPostsDB(state, db){
     state.publishedPostsDB = db
+  },
+  setPostsFetched(state, status){
+    state.postsFetched = status
   }
 }
 

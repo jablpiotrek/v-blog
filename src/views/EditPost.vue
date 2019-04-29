@@ -6,13 +6,14 @@
 
     <PostEditor 
       v-if="post"
-      :html.sync="post.html"
-      :author.sync="post.author"
-      :title.sync="post.title"
-      :published.sync="post.published"
-      :abstract.sync="post.abstract"
+      :html.sync="post.data.html"
+      :author.sync="post.data.author"
+      :title.sync="post.data.title"
+      :published.sync="post.data.published"
+      :abstract.sync="post.data.abstract"
     />
-
+    <Loading v-else />
+    
     <button
       type="button"
       @click="submit"
@@ -32,9 +33,11 @@
 <script>
 import PostEditor from '../components/PostEditor.vue'
 import time from '../mixins/time'
+import Loading from '../components/Loading.vue'
 export default {
   components: {
-    PostEditor
+    PostEditor,
+    Loading
   },
   mixins: [time],
   computed: {
@@ -42,7 +45,7 @@ export default {
       return this.$route.params.postId
     },
     post() {
-      return this.$store.getters.postById(this.id).data
+      return this.$store.getters.postById(this.id)
     },
     postsDB() {
       return this.$store.state.postsDB
@@ -51,7 +54,7 @@ export default {
   methods: {
     async submit() {
       this.post.editTime = this.time()
-      await this.postsDB.doc(this.id).set(this.post)
+      await this.postsDB.doc(this.id).set(this.post.data)
       this.$router.push({
         name: 'home'
       })
