@@ -20,6 +20,7 @@ const actions = {
       
       // put fetched data in vuex store
       commit('updatePosts', posts)
+      commit('setPostsFetched', true)
     })
   },
   setCurrentUser({ commit }, user) {

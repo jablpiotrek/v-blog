@@ -12,6 +12,7 @@ export default new Vuex.Store({
     postsDB: null,
     publishedPostsDB: null,
     posts: [],
+    postsFetched: false,
     currentUser: null,
     postsListener: null
   },

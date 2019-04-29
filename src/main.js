@@ -4,6 +4,10 @@ import router from "./router"
 import store from "./store/store"
 import "./registerServiceWorker"
 
+import VModal from 'vue-js-modal'
+
+Vue.use(VModal)
+
 Vue.config.productionTip = false
 
 new Vue({
