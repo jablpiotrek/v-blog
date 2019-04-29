@@ -16,23 +16,14 @@
     >
       Go to posts list
     </button>
-    <post-control-buttons
-      v-if="isEditable && displayControls"
-      :post-id="postId"
-    />
   </div>
 </template>
 
 <script>
 import 'highlight.js/styles/monokai-sublime.css'
 
-import PostControlButtons from './PostControlButtons.vue'
-
 export default {
   name: 'Post',
-  components: {
-    PostControlButtons
-  },
   props: {
     postId: {
       type: String,
