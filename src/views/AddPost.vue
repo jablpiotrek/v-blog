@@ -66,7 +66,9 @@ export default {
   methods: {
     async submit() {
       this.editTime = this.time()
-      await this.postsDB.doc(this.docId).set(this.post)
+      await this.postsDB.doc(this.docId).set(this.post).catch(() => {
+        console.error('Error during post add!')
+      })
       this.$router.push({
         name: 'home'
       })

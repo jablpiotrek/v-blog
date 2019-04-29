@@ -60,7 +60,6 @@
 </template>
 <script>
 import Post from './Post.vue'
-// TODO: add loader adfter post submit
 export default {
   name: 'PostEditor',
   components: {
