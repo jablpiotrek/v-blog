@@ -1,16 +1,20 @@
 <template>
   <div id="home">
-    <post-thumbnail
-      v-for="post in posts"
-      :key="post.id"
-      :post-id="post.id"
-      :title="post.data.title"
-      :edit-time="post.data.editTime"
-      :published="post.data.published"
-      :abstract="post.data.abstract"
-    />
 
-    <post-placeholder v-if="!posts.length" />
+    <post-placeholder v-if="!finishedLoading" />
+    <template v-else-if="posts.length">
+      <post-thumbnail
+        v-for="post in posts"
+        :key="post.id"
+        :post-id="post.id"
+        :title="post.data.title"
+        :edit-time="post.data.editTime"
+        :published="post.data.published"
+        :abstract="post.data.abstract"
+      />
+    </template>
+    <no-posts v-else />
+
   </div>
 </template>
 
@@ -18,15 +22,20 @@
 
 import PostThumbnail from '../components/PostThumbnail.vue'
 import PostPlaceholder from '../components/PostPlaceholder.vue'
+import NoPosts from '../components/NoPosts.vue'
 
 export default {
   components: {
     PostThumbnail,
-    PostPlaceholder
+    PostPlaceholder,
+    NoPosts
   },
   computed: {
     posts() {
       return this.$store.state.posts
+    },
+    finishedLoading() {
+      return this.$store.state.postsFetched
     }
   }
 }

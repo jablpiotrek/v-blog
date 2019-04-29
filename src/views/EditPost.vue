@@ -54,7 +54,7 @@ export default {
   methods: {
     async submit() {
       this.post.editTime = this.time()
-      await this.postsDB.doc(this.id).set(this.post)
+      await this.postsDB.doc(this.id).set(this.post.data)
       this.$router.push({
         name: 'home'
       })
