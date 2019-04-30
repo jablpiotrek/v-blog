@@ -76,7 +76,9 @@ export default {
       })
     },
     async deletePost() {
-      await this.postsDB.doc(this.postId).delete()
+      await this.postsDB.doc(this.postId).delete().catch(() => {
+        console.error('Error during post deletion!')
+      })
       this.hideDeletePopup()
     }
   }
