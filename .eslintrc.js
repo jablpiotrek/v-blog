@@ -8,6 +8,7 @@ module.exports = {
     "indent": ["error", 2],
     "semi": ["error","never"],
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-console": false,
     "vue/no-v-html": false
   },
   parserOptions: {
