@@ -53,6 +53,7 @@
       :title="title"
       :html="html"
       :author="author"
+      :abstract="abstract"
       :display-controls="false"
       post-id="post-previev" 
     />

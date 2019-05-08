@@ -3,6 +3,9 @@
     <h3>
       {{ title }}
     </h3>
+    <p>
+      {{ abstract }}
+    </p>
     <div v-html="html" />
     <p> 
       {{ author }} 
@@ -37,6 +40,10 @@ export default {
       type: String,
       default: ''
     }, 
+    abstract: {
+      type: String,
+      default: ''
+    },
     published: {
       type: Boolean,
       default: false
