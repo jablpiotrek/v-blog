@@ -7,17 +7,17 @@ const actions = {
 
     // decide which db query use
     const db = getters.isUserLoggedIn ? state.postsDB : state.publishedPostsDB
-    
+
     // attach listener
     state.postsListener = db.onSnapshot(response => {
-      let posts = [] 
+      let posts = []
       response.forEach(post => {
         posts.push({
           id: post.id,
           data: post.data()
         })
-      })      
-      
+      })
+
       // put fetched data in vuex store
       commit('updatePosts', posts)
       commit('setPostsFetched', true)

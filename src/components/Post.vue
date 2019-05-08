@@ -7,8 +7,8 @@
       {{ abstract }}
     </p>
     <div v-html="html" />
-    <p> 
-      {{ author }} 
+    <p>
+      {{ author }}
     </p>
     <p>
       {{ editTime }}
@@ -39,7 +39,7 @@ export default {
     author: {
       type: String,
       default: ''
-    }, 
+    },
     abstract: {
       type: String,
       default: ''
@@ -59,7 +59,7 @@ export default {
     displayControls: {
       type: Boolean,
       default: true
-    } 
+    }
   },
   computed: {
     isEditable(){

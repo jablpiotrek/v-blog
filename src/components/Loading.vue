@@ -1,6 +1,6 @@
 <template>
   <div class="loading">
-    <loader 
+    <loader
       class="loading__spinner"
     />
   </div>

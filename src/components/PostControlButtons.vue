@@ -14,7 +14,7 @@
       Delete
     </button>
     <modal :name="`delete-post-modal-${postId}`">
-      <modal-content 
+      <modal-content
         :header="deletePostModal.header"
         :text="deletePostModal.text"
         :actions="deletePostModal.actions"
@@ -69,10 +69,10 @@ export default {
     },
     editPost() {
       this.$router.push({
-        name: 'edit-post', 
+        name: 'edit-post',
         params: {
           postId: this.postId
-        } 
+        }
       })
     },
     async deletePost() {

@@ -4,7 +4,7 @@
       Edit Post
     </h2>
 
-    <PostEditor 
+    <PostEditor
       v-if="post"
       :html.sync="post.data.html"
       :author.sync="post.data.author"
@@ -13,7 +13,7 @@
       :abstract.sync="post.data.abstract"
     />
     <Loading v-else />
-    
+
     <button
       type="button"
       @click="submit"

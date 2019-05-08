@@ -4,7 +4,7 @@
       Add post
     </h2>
 
-    <PostEditor 
+    <PostEditor
       :html.sync="html"
       :author.sync="author"
       :title.sync="title"

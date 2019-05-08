@@ -1,10 +1,10 @@
 <template>
   <div class="editor">
     <label for="title">
-      Title: 
+      Title:
     </label>
 
-    <input 
+    <input
       v-model="titleField"
       type="text"
       name="title"
@@ -31,12 +31,12 @@
     />
 
     <label for="author">
-      Author: 
+      Author:
     </label>
 
-    <input 
+    <input
       v-model="authorField"
-      type="text" 
+      type="text"
       name="author"
     >
 
@@ -44,10 +44,10 @@
       Publish post automatically
     </label>
 
-    <input 
+    <input
       v-model="publishedField"
-      type="checkbox" 
-      name="published" 
+      type="checkbox"
+      name="published"
     >
     <post
       :title="title"
@@ -55,7 +55,7 @@
       :author="author"
       :abstract="abstract"
       :display-controls="false"
-      post-id="post-previev" 
+      post-id="post-previev"
     />
   </div>
 </template>

@@ -2,7 +2,7 @@
   <nav>
     <ul>
       <li>
-        <router-link 
+        <router-link
           to="/"
           replace
         >
@@ -10,15 +10,15 @@
         </router-link>
       </li>
       <li v-if="this.$store.getters.isUserLoggedIn">
-        <router-link 
-          to="/add-post" 
+        <router-link
+          to="/add-post"
           replace
         >
           Add Post
         </router-link>
       </li>
       <li>
-        <router-link 
+        <router-link
           to="/login"
           replace
         >
