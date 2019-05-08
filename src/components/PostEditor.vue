@@ -50,11 +50,11 @@
       name="published" 
     >
     <post
-      post-id="post-previev" 
       :title="title"
       :html="html"
       :author="author"
       :display-controls="false"
+      post-id="post-previev" 
     />
   </div>
 </template>

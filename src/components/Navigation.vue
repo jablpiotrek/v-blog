@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <nav>
     <ul>
       <li>
         <router-link 
@@ -26,7 +26,7 @@
         </router-link>
       </li>
     </ul>
-  </div>
+  </nav>
 </template>
 
 <script>
