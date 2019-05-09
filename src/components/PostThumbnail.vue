@@ -8,10 +8,15 @@
       {{ abstract }}
     </p>
 
+    <img
+      :src="thumbnail"
+      aria-hidden="true"
+    >
+
     <p>
       {{ editTime }}
     </p>
- 
+
     <button
       type="button"
       @click="openPost"
@@ -53,7 +58,11 @@ export default {
     editTime: {
       type: String,
       default: ''
-    } 
+    },
+    thumbnail: {
+      type: String,
+      default: ''
+    }
   },
   computed: {
     isEditable(){
@@ -63,10 +72,10 @@ export default {
   methods: {
     openPost() {
       this.$router.push({
-        name: 'post', 
+        name: 'post',
         params: {
           postId: this.postId
-        } 
+        }
       })
     }
   }

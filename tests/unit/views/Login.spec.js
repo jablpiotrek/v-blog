@@ -34,7 +34,7 @@ describe('Login.vue', () => {
       expect(wrapper.html()).to.contain('name="log-in"')
     })
   })
-  
+
   describe('Logged user', () => {
     const mocks = {
       $store: {

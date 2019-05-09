@@ -11,6 +11,7 @@
         :edit-time="post.data.editTime"
         :published="post.data.published"
         :abstract="post.data.abstract"
+        :thumbnail="post.data.thumbnail"
       />
     </template>
     <no-posts v-else />
