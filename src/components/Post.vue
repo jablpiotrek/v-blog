@@ -1,30 +1,5 @@
 <template>
   <div>
-    <meta
-      :content="meta.url"
-      property="og:url"
-    >
-
-    <meta
-      content="article"
-      property="og:type"
-    >
-
-    <meta
-      :content="meta.title"
-      property="og:title"
-    >
-
-    <meta
-      :content="meta.desc"
-      property="og:description"
-    >
-
-    <meta
-      :content="meta.thumbnail"
-      property="og:image"
-    >
-
     <h3>
       {{ title }}
     </h3>
@@ -63,6 +38,33 @@ import 'highlight.js/styles/monokai-sublime.css'
 
 export default {
   name: 'Post',
+  metaInfo() {
+    return {
+      title:  this.meta.title,
+      meta: [
+        {
+          property: 'og:url',
+          content: this.meta.url,
+        },
+        {
+          property: 'og:type',
+          content: 'article'
+        },
+        {
+          property: 'og:title',
+          content: this.meta.title
+        },
+        {
+          property: 'og:description',
+          content: this.meta.desc
+        },
+        {
+          property: 'og:image',
+          content: this.meta.thumbnail
+        }
+      ]
+    }
+  },
   props: {
     postId: {
       type: String,
