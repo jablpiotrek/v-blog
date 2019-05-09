@@ -1,10 +1,10 @@
 <template>
   <div class="editor">
     <label for="title">
-      Title: 
+      Title:
     </label>
 
-    <input 
+    <input
       v-model="titleField"
       type="text"
       name="title"
@@ -20,6 +20,16 @@
       name="abstract"
     />
 
+    <label for="thumbnail">
+      Thumbnail image url:
+    </label>
+
+    <textarea
+      v-model="thumbnailField"
+      type="text"
+      name="thumbnail"
+    />
+
     <label for="html">
       HTML:
     </label>
@@ -31,12 +41,12 @@
     />
 
     <label for="author">
-      Author: 
+      Author:
     </label>
 
-    <input 
+    <input
       v-model="authorField"
-      type="text" 
+      type="text"
       name="author"
     >
 
@@ -44,17 +54,19 @@
       Publish post automatically
     </label>
 
-    <input 
+    <input
       v-model="publishedField"
-      type="checkbox" 
-      name="published" 
+      type="checkbox"
+      name="published"
     >
     <post
-      post-id="post-previev" 
       :title="title"
       :html="html"
       :author="author"
+      :abstract="abstract"
       :display-controls="false"
+      :thumbnail="thumbnail"
+      post-id="post-previev"
     />
   </div>
 </template>
@@ -85,6 +97,10 @@ export default {
     published: {
       required: true,
       type: Boolean
+    },
+    thumbnail: {
+      required: true,
+      type: String
     }
   },
   data() {
@@ -93,7 +109,8 @@ export default {
       authorField: this.author,
       titleField: this.title,
       publishedField: this.published,
-      abstractField: this.abstract
+      abstractField: this.abstract,
+      thumbnailField: this.thumbnail
     }
   },
   watch: {
@@ -111,6 +128,9 @@ export default {
     },
     htmlField(value) {
       this.$emit('update:html', value)
+    },
+    thumbnailField(value) {
+      this.$emit('update:thumbnail', value)
     }
   }
 }

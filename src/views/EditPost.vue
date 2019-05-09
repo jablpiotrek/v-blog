@@ -4,40 +4,33 @@
       Edit Post
     </h2>
 
-    <PostEditor 
+    <post-editor
       v-if="post"
       :html.sync="post.data.html"
       :author.sync="post.data.author"
       :title.sync="post.data.title"
       :published.sync="post.data.published"
       :abstract.sync="post.data.abstract"
+      :thumbnail.sync="post.data.thumbnail"
     />
-    <Loading v-else />
-    
-    <button
-      type="button"
-      @click="submit"
-    >
-      Save post
-    </button>
 
-    <button
-      type="button"
-      @click="close"
-    >
-      Close
-    </button>
+    <loading v-else />
+
+    <post-edit-controls @submit="submit" />
   </div>
 </template>
 
 <script>
 import PostEditor from '../components/PostEditor.vue'
-import time from '../mixins/time'
 import Loading from '../components/Loading.vue'
+import PostEditControls from '../components/PostEditControls.vue'
+
+import time from '../mixins/time'
 export default {
   components: {
     PostEditor,
-    Loading
+    Loading,
+    PostEditControls
   },
   mixins: [time],
   computed: {
@@ -57,9 +50,6 @@ export default {
       await this.postsDB.doc(this.id).set(this.post.data).catch(() => {
         console.error('Error during post edit!')
       })
-      this.close()
-    },
-    close() {
       this.$router.push({
         name: 'home'
       })

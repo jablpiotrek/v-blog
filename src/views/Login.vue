@@ -3,31 +3,31 @@
     <h2>
       Sign in
     </h2>
-    <form 
-      v-if="!isUserLoggedIn" 
+    <form
+      v-if="!isUserLoggedIn"
       name="login"
     >
       <div>
         <label for="">e-mail</label>
-        <input 
-          v-model="email" 
-          type="email" 
-          name="email" 
+        <input
+          v-model="email"
+          type="email"
+          name="email"
           autocomplete="email"
         >
       </div>
       <div>
         <label for="password">Password</label>
-        <input 
-          v-model="password" 
-          type="password" 
-          name="password" 
+        <input
+          v-model="password"
+          type="password"
+          name="password"
           autocomplete="password"
         >
       </div>
-      <button 
-        type="button" 
-        name="log-in" 
+      <button
+        type="button"
+        name="log-in"
         @click="logIn"
       >
         Sign in
@@ -37,9 +37,9 @@
       <p>
         You are logged in.
       </p>
-      <button 
-        type="button" 
-        name="password" 
+      <button
+        type="button"
+        name="password"
         @click="logOut"
       >
         Log out

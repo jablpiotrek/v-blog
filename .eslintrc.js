@@ -7,8 +7,9 @@ module.exports = {
   rules: {
     "indent": ["error", 2],
     "semi": ["error","never"],
-    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-console": 0,
+    "no-trailing-spaces": 2,
     "vue/no-v-html": false
   },
   parserOptions: {

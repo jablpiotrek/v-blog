@@ -1,7 +1,7 @@
 <template>
   <div class="modal">
-    <h2 class="modal__header"> 
-      {{ header }} 
+    <h2 class="modal__header">
+      {{ header }}
     </h2>
     <p class="modal__text">
       {{ text }}
