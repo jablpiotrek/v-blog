@@ -8,6 +8,11 @@
       {{ abstract }}
     </p>
 
+    <img
+      :src="thumbnail"
+      aria-hidden="true"
+    >
+
     <p>
       {{ editTime }}
     </p>
@@ -51,6 +56,10 @@ export default {
       default: false
     },
     editTime: {
+      type: String,
+      default: ''
+    },
+    thumbnail: {
       type: String,
       default: ''
     }

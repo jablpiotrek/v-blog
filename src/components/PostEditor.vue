@@ -20,6 +20,16 @@
       name="abstract"
     />
 
+    <label for="thumbnail">
+      Thumbnail image url:
+    </label>
+
+    <textarea
+      v-model="thumbnailField"
+      type="text"
+      name="thumbnail"
+    />
+
     <label for="html">
       HTML:
     </label>
@@ -55,6 +65,7 @@
       :author="author"
       :abstract="abstract"
       :display-controls="false"
+      :thumbnail="thumbnail"
       post-id="post-previev"
     />
   </div>
@@ -86,6 +97,10 @@ export default {
     published: {
       required: true,
       type: Boolean
+    },
+    thumbnail: {
+      required: true,
+      type: String
     }
   },
   data() {
@@ -94,7 +109,8 @@ export default {
       authorField: this.author,
       titleField: this.title,
       publishedField: this.published,
-      abstractField: this.abstract
+      abstractField: this.abstract,
+      thumbnailField: this.thumbnail
     }
   },
   watch: {
@@ -112,6 +128,9 @@ export default {
     },
     htmlField(value) {
       this.$emit('update:html', value)
+    },
+    thumbnailField(value) {
+      this.$emit('update:thumbnail', value)
     }
   }
 }

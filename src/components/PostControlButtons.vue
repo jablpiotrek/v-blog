@@ -44,12 +44,13 @@ export default {
         text: 'Do you really want to delete post?',
         actions: [
           {
-            title: 'Delete',
-            handler: this.deletePost
+            title: 'Yes',
+            handler: this.deletePost,
+            danger: true
           },
           {
-            title: 'Cancel',
-            handler: this.hideDeletePopup
+            title: 'No',
+            handler: this.hideDeletePopup,
           }
         ]
       }

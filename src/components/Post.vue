@@ -1,19 +1,55 @@
 <template>
   <div>
+    <meta
+      :content="meta.url"
+      property="og:url"
+    >
+
+    <meta
+      content="article"
+      property="og:type"
+    >
+
+    <meta
+      :content="meta.title"
+      property="og:title"
+    >
+
+    <meta
+      :content="meta.desc"
+      property="og:description"
+    >
+
+    <meta
+      :content="meta.thumbnail"
+      property="og:image"
+    >
+
     <h3>
       {{ title }}
     </h3>
+
     <p>
       {{ abstract }}
     </p>
+
+    <img
+      :src="thumbnail"
+      aria-hidden="true"
+    >
+
     <div v-html="html" />
+
     <p>
       {{ author }}
     </p>
+
     <p>
       {{ editTime }}
     </p>
+
     <button
+      v-if="displayControls"
       type="button"
       @click="back"
     >
@@ -59,11 +95,23 @@ export default {
     displayControls: {
       type: Boolean,
       default: true
+    },
+    thumbnail: {
+      type: String,
+      default: ''
     }
   },
   computed: {
     isEditable(){
       return this.$store.getters.isUserLoggedIn
+    },
+    meta() {
+      return {
+        url: window.location.href,
+        title: this.title,
+        desc: this.abstract,
+        thumbnail: this.thumbnail
+      }
     }
   },
   mounted() {

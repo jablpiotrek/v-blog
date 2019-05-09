@@ -4,32 +4,31 @@
       Add post
     </h2>
 
-    <PostEditor
+    <post-editor
       :html.sync="html"
       :author.sync="author"
       :title.sync="title"
       :published.sync="published"
       :abstract.sync="abstract"
+      :thumbnail.sync="thumbnail"
     />
 
-    <button
-      type="button"
-      @click="submit"
-    >
-      Submit post
-    </button>
+    <post-edit-controls @submit="submit" />
   </div>
 
 </template>
 
 <script>
 import PostEditor from '../components/PostEditor.vue'
+import PostEditControls from '../components/PostEditControls.vue'
+
 import time from '../mixins/time'
 
 export default {
   name: 'AddPost',
   components: {
-    PostEditor
+    PostEditor,
+    PostEditControls
   },
   mixins: [time],
   data() {
@@ -39,7 +38,8 @@ export default {
       author: '',
       title: '',
       abstract: '',
-      editTime: ''
+      editTime: '',
+      thumbnail:''
     }
   },
   computed: {
@@ -53,14 +53,15 @@ export default {
         published: this.published,
         title: this.title,
         abstract: this.abstract,
-        editTime: this.editTime
+        editTime: this.editTime,
+        thumbnail: this.thumbnail
       }
     },
     docId() {
       const title = this.post.title
       const reg = /[^a-zA-Z\d]/g
       const titleId = title.replace(reg, '-')
-      return `${Math.random().toString(36).substr(2, 8)}-${titleId}`
+      return `${titleId}-${Math.random().toString(36).substr(2, 10)}`
     }
   },
   methods: {
