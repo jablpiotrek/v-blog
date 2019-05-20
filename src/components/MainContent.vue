@@ -1,5 +1,5 @@
 <template>
-  <div id="content">
+  <div class="main-content">
     <heading />
     <navigation v-if="showNavigation" />
     <main>
@@ -51,3 +51,9 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.main-content {
+  position: relative;
+}
+</style>
+
