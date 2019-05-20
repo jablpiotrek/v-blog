@@ -11,6 +11,7 @@
   "dependencies": {
     "firebase": "^5.5.7",
     "highlight.js": "^9.15.6",
+    "particles.js": "^2.0.0",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.17",
     "vue-content-loader": "^0.2.1",
