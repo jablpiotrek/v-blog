@@ -50,6 +50,7 @@ export default {
   background: $primary;
   border-bottom: 2px solid $secondary;
   @include transition(height);
+  transform: translateZ(0);
 
   &--compact {
     height: 42px;
