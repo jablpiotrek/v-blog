@@ -33,5 +33,6 @@ export default {
 
 <style lang="scss">
 .app {
+  height: 100%;
 }
 </style>
