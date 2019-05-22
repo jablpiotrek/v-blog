@@ -25,11 +25,44 @@ import PostThumbnail from '../components/PostThumbnail.vue'
 import PostPlaceholder from '../components/PostPlaceholder.vue'
 import NoPosts from '../components/NoPosts.vue'
 
+import metaConfig from '../assets/config/meta.js'
+
 export default {
   components: {
     PostThumbnail,
     PostPlaceholder,
     NoPosts
+  },
+  metaInfo() {
+    return {
+      title: metaConfig.title,
+      meta: [
+        {
+          property: 'og:url',
+          content: window.location.href,
+        },
+        {
+          property: 'og:type',
+          content: 'blog'
+        },
+        {
+          property: 'og:title',
+          content: metaConfig.title
+        },
+        {
+          property: 'og:description',
+          content: metaConfig.desc
+        },
+        {
+          property: 'description',
+          content: metaConfig.desc
+        },
+        {
+          property: 'keywords',
+          content: metaConfig.keywords
+        }
+      ]
+    }
   },
   computed: {
     posts() {

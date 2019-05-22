@@ -59,6 +59,10 @@ export default {
           content: this.meta.desc
         },
         {
+          property: 'description',
+          content: this.meta.desc
+        },
+        {
           property: 'og:image',
           content: this.meta.thumbnail
         }
