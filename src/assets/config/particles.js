@@ -1,10 +1,10 @@
 export default {
   "particles": {
     "number": {
-      "value": 220,
+      "value": 150,
       "density": {
-        "enable": false,
-        "value_area": 2000
+        "enable": true,
+        "value_area": 1000
       }
     },
     "color": {
