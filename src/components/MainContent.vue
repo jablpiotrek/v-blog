@@ -1,5 +1,5 @@
 <template>
-  <div class="main-content">
+  <div :class="`main-content ${isUserLoggedIn ? 'main-content--logged-user' : ''}`">
     <heading />
     <main class="main-content__router-view">
       <router-view />
@@ -25,7 +25,11 @@ export default {
     Heading,
     Foot
   },
-
+  computed: {
+    isUserLoggedIn() {
+      return this.$store.getters.isUserLoggedIn
+    }
+  },
   created() {
     // init firebase app with config
     firebase.initializeApp(firebaseConfig)
@@ -52,6 +56,10 @@ export default {
   flex-direction: column;
   box-sizing: border-box;
   padding-top: 80px;
+
+  &--logged-user {
+    padding-top: 120px;
+  }
 
   &__router-view {
     flex: 1 0 auto;

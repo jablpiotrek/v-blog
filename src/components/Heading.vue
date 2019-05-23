@@ -61,7 +61,7 @@ export default {
   width: 100%;
   min-height: 70px;
   background: $primary;
-  border-bottom: 2px solid $secondary;
+  border-bottom: 10px solid $secondary;
   @include transition(height);
   transform: translateZ(0);
 
