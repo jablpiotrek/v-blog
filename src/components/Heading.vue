@@ -1,25 +1,40 @@
 <template>
   <header :class="`heading ${isScrolled ? 'heading--compact' : ''}`">
-    <router-link
-      to="/"
-      class="heading__home-link"
-    >
-      <h1 class="heading__title">
-        <span class="heading__keyword">blog</span>.jablonski.<strong>tech</strong>
-      </h1>
-    </router-link>
-    <h2 class="heading__sentence">
-      { <span class="heading__sentence heading__sentence--keyword">webdev</span> +  <span class="heading__sentence heading__sentence--keyword">stuff</span> }
-    </h2>
+    <div class="heading__content">
+      <router-link
+        to="/"
+        class="heading__home-link"
+      >
+        <h1 class="heading__title">
+          <span class="heading__keyword">blog</span>.jablonski.<strong>tech</strong>
+        </h1>
+      </router-link>
+      <h2 class="heading__sentence">
+        { <span class="heading__sentence heading__sentence--keyword">webdev</span> +  <span class="heading__sentence heading__sentence--keyword">stuff</span> }
+      </h2>
+    </div>
+    <div class="heading__navigation">
+      <navigation v-if="showNavigation" />
+    </div>
   </header>
 </template>
 
 <script>
+import Navigation from './Navigation.vue'
+
 export default {
   name: 'Heading',
+  components: {
+    Navigation
+  },
   data() {
     return {
       isScrolled: false
+    }
+  },
+  computed: {
+    showNavigation() {
+      return this.$store.getters.isUserLoggedIn
     }
   },
   mounted() {
@@ -38,29 +53,35 @@ export default {
 <style lang="scss" scoped>
 .heading {
   position: fixed;
-  top: 0;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
   box-sizing: border-box;
   width: 100%;
-  height: 70px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: $spacer-small 0;
+  min-height: 70px;
   background: $primary;
   border-bottom: 2px solid $secondary;
   @include transition(height);
   transform: translateZ(0);
 
   &--compact {
-    height: 42px;
+    min-height: 42px;
   }
 
-  @media #{$screen-medium} {
-    flex-direction: row-reverse;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
-    align-items: flex-end;
-    padding: $spacer-small $spacer-big;
+    padding: $spacer-small 0;
+
+    @media #{$screen-medium} {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: $spacer-small $spacer-big;
+    }
   }
 
   &__title {
@@ -88,15 +109,15 @@ export default {
   }
 
   &__sentence {
+    position: relative;
     margin: 0;
     color: $white;
     text-transform: lowercase;
     font-family: $sans-serif;
     font-size: $font-base;
-    @include transition(opacity);
 
     .heading--compact & {
-      opacity: 0;
+      display: none;
     }
 
     &--keyword {

@@ -1,8 +1,7 @@
 <template>
   <div class="main-content">
     <heading />
-    <navigation v-if="showNavigation" />
-    <main>
+    <main class="main-content__router-view">
       <router-view />
     </main>
     <foot />
@@ -17,22 +16,16 @@ import firebase from "firebase/app"
 import "firebase/auth"
 import 'firebase/firestore'
 
-import Navigation from './Navigation.vue'
 import Heading from './Heading.vue'
 import Foot from './Foot.vue'
 
 export default {
   name: 'MainContent',
   components: {
-    Navigation,
     Heading,
     Foot
   },
-  computed: {
-    showNavigation() {
-      return this.$store.getters.isUserLoggedIn
-    }
-  },
+
   created() {
     // init firebase app with config
     firebase.initializeApp(firebaseConfig)
@@ -54,6 +47,15 @@ export default {
 <style lang="scss">
 .main-content {
   position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-top: 80px;
+
+  &__router-view {
+    flex: 1 0 auto;
+  }
 }
 </style>
 

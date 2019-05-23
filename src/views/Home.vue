@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div>
 
     <post-placeholder v-if="!finishedLoading" />
     <template v-else-if="posts.length">

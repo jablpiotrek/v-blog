@@ -1,5 +1,5 @@
 <template>
-  <div id="post-details">
+  <div>
     <post-placeholder v-if="isLoading" />
     <post-not-found v-else-if="!post" />
     <post
