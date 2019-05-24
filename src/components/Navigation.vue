@@ -40,19 +40,46 @@ export default {
 
 <style lang="scss">
 .navigation {
-  height: 20px;
+  padding-top: $spacer;
   background: $secondary;
 
   &__links {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 100%;
     padding: 0;
+    font-size: $font-base;
+    list-style: none;
+
+    @media #{$screen-medium} {
+      flex-direction: row;
+    }
   }
 
   &__link {
-    height: 100%;
     margin: 0;
+    text-decoration: none;
+
+    a {
+      display: block;
+      height: $spacer-big;
+      line-height: $spacer-big;
+      margin: 0 $spacer;
+      padding: 0 $spacer;
+      text-decoration: none;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      text-align: center;
+
+      @media #{$screen-medium} {
+        margin: 0;
+      }
+
+      &:hover,
+      &:focus {
+        border-bottom-color: $primary;
+      }
+    }
   }
 }
 </style>

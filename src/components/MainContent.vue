@@ -58,7 +58,11 @@ export default {
   padding-top: 80px;
 
   &--logged-user {
-    padding-top: 120px;
+    padding-top: 180px;
+
+    @media #{$screen-medium} {
+      padding-top: 120px;
+    }
   }
 
   &__router-view {
