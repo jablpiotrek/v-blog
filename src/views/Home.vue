@@ -1,7 +1,7 @@
 <template>
   <div>
-
     <post-placeholder v-if="!finishedLoading" />
+
     <template v-else-if="posts.length">
       <post-thumbnail
         v-for="post in posts"
@@ -14,8 +14,10 @@
         :thumbnail="post.data.thumbnail"
       />
     </template>
-    <no-posts v-else />
 
+    <no-posts v-else >
+      Unfortunatelly, there are no posts that could be displayed.
+    </no-posts>
   </div>
 </template>
 

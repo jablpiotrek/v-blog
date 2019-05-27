@@ -77,7 +77,7 @@ export default {
 
       &:hover,
       &:focus {
-        border-bottom-color: $primary;
+        font-weight: bold;
       }
     }
   }
