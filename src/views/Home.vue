@@ -16,7 +16,7 @@
     </template>
 
     <no-posts v-else >
-      Unfortunatelly, there are no posts that could be displayed.
+      Unfortunately, there are no posts that could be displayed.
     </no-posts>
   </div>
 </template>
