@@ -10,6 +10,7 @@
     "serve:prod": "serve dist"
   },
   "dependencies": {
+    "feather-icons": "^4.22.1",
     "firebase": "^5.5.7",
     "highlight.js": "^9.15.6",
     "particles.js": "^2.0.0",
