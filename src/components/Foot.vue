@@ -1,27 +1,31 @@
 <template>
   <footer class="foot">
-    <a
-      target="_blank"
-      rel="noopener noreferrer"
-      href="https://www.linkedin.com/in/piotr-jablonski-008b2799/"
-      class="foot__item"
-    >
-      <icon
-        title="linkedin"
-        class-name="foot__icon"
-      />
-    </a>
-    <a
-      target="_blank"
-      rel="noopener noreferrer"
-      href="https://github.com/jablpiotrek"
-      class="foot__item"
-    >
-      <icon
-        title="github"
-        class-name="foot__icon"
-      />
-    </a>
+    <ul class="foot__links">
+      <li class="foot__item">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/piotr-jablonski-008b2799/"
+        >
+          <icon
+            title="linkedin"
+            class-name="foot__icon"
+          />
+        </a>
+      </li>
+      <li class="foot__item">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/jablpiotrek"
+        >
+          <icon
+            title="github"
+            class-name="foot__icon"
+          />
+        </a>
+      </li>
+    </ul>
   </footer>
 </template>
 
@@ -37,10 +41,15 @@ export default {
 
 <style lang="scss" scoped>
 .foot {
-  display: flex;
-  justify-content: center;
+  display: block;
   background-color: $primary;
   border-top: 12px solid $secondary;
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  }
 
   &__item {
     display: block;
