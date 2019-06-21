@@ -1,12 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Loading from './components/Loading.vue'
+import Login from './views/Login.vue'
+import PostDetails from './views/PostDetails.vue'
+import EditPost from './views/EditPost.vue'
+import AddPost from './views/AddPost.vue'
 
-const Login = () => import('./views/Login.vue')
-const Home = () => import('./views/Home.vue')
-const AddPost = () => import('./views/AddPost.vue')
-const EditPost = () => import('./views/EditPost.vue')
-const PostDetails = () => import('./views/PostDetails.vue')
-
+const Home = () => ({
+  component: import(/* webpackChunkName: 'home-view' */'./views/Home.vue'),
+  loading: Loading,
+  delay: 100
+})
 
 Vue.use(Router)
 

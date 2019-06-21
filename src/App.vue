@@ -10,12 +10,12 @@
 import Loading from './components/Loading.vue'
 
 const MainContent = () => ({
-  component: import('./components/MainContent.vue'),
+  component: import(/* webpackChunkName: 'main-content-component' */'./components/MainContent.vue'),
   loading: Loading,
-  delay: 50
+  delay: 100
 })
 
-const ParticlesBackground = () => import('./components/ParticlesBackground')
+const ParticlesBackground = () => import(/* webpackChunkName: 'particles-background-component' */'./components/ParticlesBackground')
 
 export default {
   name: "App",

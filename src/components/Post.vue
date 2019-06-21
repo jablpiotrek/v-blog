@@ -134,7 +134,7 @@ export default {
       const codeBlocks = document.querySelectorAll('code')
 
       if (codeBlocks.length) {
-        const hljs = await import ('highlight.js')
+        const hljs = await import(/* webpackChunkName: 'highlight-js' */'highlight.js')
         codeBlocks.forEach(block => {
           hljs.highlightBlock(block)
         })
