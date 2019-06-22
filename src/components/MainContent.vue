@@ -1,9 +1,7 @@
 <template>
   <div :class="`main-content ${isUserLoggedIn ? 'main-content--logged-user' : ''}`">
     <heading />
-    <main class="main-content__router-view">
-      <router-view />
-    </main>
+    <router-view class="main-content__router-view" />
     <foot />
   </div>
 </template>
@@ -55,7 +53,7 @@ export default {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding-top: 80px;
+  padding-top: 72px;
 
   &--logged-user {
     padding-top: 180px;
@@ -67,6 +65,16 @@ export default {
 
   &__router-view {
     flex: 1 0 auto;
+    margin: $spacer-big $spacer;
+    @media #{$screen-medium} {
+      margin: $spacer-large 0;
+      width: 900px;
+      align-self: center;
+    }
+
+    @media #{$screen-big} {
+      width: 1200px;
+    }
   }
 }
 </style>

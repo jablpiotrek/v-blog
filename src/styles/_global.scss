@@ -4,19 +4,19 @@
 @import './global/spacers';
 @import './global/text-sizes';
 @import './global/mixins';
+@import './global/components';
 
 
 // global text setup
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: $serif;
     color: $primary;
     margin: 0;
 }
 
 p, a {
     font-size: $font-base;
-    font-family: $serif;
     font-weight: normal;
-    color: $primary;
 }
 
 body, html {
@@ -28,4 +28,12 @@ body, html {
 
 ul, ol {
     margin: 0;
+}
+
+button {
+    @extend %primary-button;
+}
+
+p {
+    @extend %paragraph;
 }

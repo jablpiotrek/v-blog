@@ -16,3 +16,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.post-placeholder {
+  width: 100%;
+}
+</style>
+

@@ -62,8 +62,6 @@ export default {
   min-height: 70px;
   background: $primary;
   border-bottom: $spacer solid $secondary;
-  @include transition(height);
-  transform: translateZ(0);
 
   &--compact {
     min-height: 42px;
@@ -90,9 +88,8 @@ export default {
     font-weight: normal;
     text-transform: uppercase;
     font-family: $sans-serif;
-    font-size:  $font-large;
+    font-size:  $font-big;
 
-    @include transition(font-size);
 
     @media #{$screen-medium} {
       font-size: $font-extra-large;
@@ -114,7 +111,7 @@ export default {
     color: $white;
     text-transform: lowercase;
     font-family: $sans-serif;
-    font-size: $font-base;
+    font-size: $font-small;
 
     .heading--compact & {
       display: none;
