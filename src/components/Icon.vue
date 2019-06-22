@@ -48,7 +48,7 @@ export default {
   &:focus {
     fill: $primary;
   }
-  
+
   &--button {
     padding: 0;
     fill: none;
