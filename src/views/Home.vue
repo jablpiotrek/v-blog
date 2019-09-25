@@ -1,7 +1,7 @@
 <template>
-  <div id="home">
-
+  <div>
     <post-placeholder v-if="!finishedLoading" />
+
     <template v-else-if="posts.length">
       <post-thumbnail
         v-for="post in posts"
@@ -14,8 +14,10 @@
         :thumbnail="post.data.thumbnail"
       />
     </template>
-    <no-posts v-else />
 
+    <no-posts v-else >
+      Unfortunately, there are no posts that could be displayed.
+    </no-posts>
   </div>
 </template>
 
@@ -25,11 +27,44 @@ import PostThumbnail from '../components/PostThumbnail.vue'
 import PostPlaceholder from '../components/PostPlaceholder.vue'
 import NoPosts from '../components/NoPosts.vue'
 
+import metaConfig from '../assets/config/meta.js'
+
 export default {
   components: {
     PostThumbnail,
     PostPlaceholder,
     NoPosts
+  },
+  metaInfo() {
+    return {
+      title: metaConfig.title,
+      meta: [
+        {
+          property: 'og:url',
+          content: window.location.href,
+        },
+        {
+          property: 'og:type',
+          content: 'blog'
+        },
+        {
+          property: 'og:title',
+          content: metaConfig.title
+        },
+        {
+          property: 'og:description',
+          content: metaConfig.desc
+        },
+        {
+          property: 'description',
+          content: metaConfig.desc
+        },
+        {
+          property: 'keywords',
+          content: metaConfig.keywords
+        }
+      ]
+    }
   },
   computed: {
     posts() {

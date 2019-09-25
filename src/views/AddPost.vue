@@ -1,5 +1,5 @@
 <template>
-  <div id="add-post">
+  <div>
     <h2>
       Add post
     </h2>
@@ -61,7 +61,7 @@ export default {
       const title = this.post.title
       const reg = /[^a-zA-Z\d]/g
       const titleId = title.replace(reg, '-')
-      return `${titleId}-${Math.random().toString(36).substr(2, 10)}`
+      return `${Math.random().toString(36).substr(2, 6)}_${titleId}`
     }
   },
   methods: {
