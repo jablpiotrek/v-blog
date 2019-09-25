@@ -1,7 +1,9 @@
 <template>
-  <div id="post-details">
+  <div>
     <post-placeholder v-if="isLoading" />
-    <post-not-found v-else-if="!post" />
+    <no-post v-else-if="!post" >
+      There is no such post.
+    </no-post>
     <post
       v-else
       :post-id="id"
@@ -19,13 +21,13 @@
 <script>
 import Post from '../components/Post.vue'
 import PostPlaceholder from '../components/PostPlaceholder.vue'
-import PostNotFound from '../components/PostNotFound.vue'
+import NoPost from '../components/NoPosts.vue'
 
 export default {
   components: {
     Post,
     PostPlaceholder,
-    PostNotFound
+    NoPost
   },
   computed: {
     id() {

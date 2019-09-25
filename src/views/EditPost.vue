@@ -1,5 +1,5 @@
 <template>
-  <div id="edit-post">
+  <div>
     <h2>
       Edit Post
     </h2>

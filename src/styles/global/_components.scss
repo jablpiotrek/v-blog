@@ -1,0 +1,25 @@
+%primary-button {
+    display: flex;
+    min-width: 48px;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 $spacer-big;
+    border: 1px solid $primary;
+    border-radius: 100vh;
+    background-color: $white;
+    font-size: $font-base;
+    font-family: $sans-serif;
+    font-weight: bold;
+
+    &:hover,
+    &:focus {
+        border-color: $secondary;
+        color: $secondary;
+    }
+}
+
+%paragraph {
+    text-align: justify;
+    line-height: 1.75;
+}

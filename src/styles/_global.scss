@@ -1,1 +1,39 @@
-@import './global/variables'
+@import './global/colors';
+@import './global/fonts';
+@import './global/breakpoints';
+@import './global/spacers';
+@import './global/text-sizes';
+@import './global/mixins';
+@import './global/components';
+
+
+// global text setup
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: $serif;
+    color: $primary;
+    margin: 0;
+}
+
+p, a {
+    font-size: $font-base;
+    font-weight: normal;
+}
+
+body, html {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+ul, ol {
+    margin: 0;
+}
+
+button {
+    @extend %primary-button;
+}
+
+p {
+    @extend %paragraph;
+}

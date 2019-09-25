@@ -1,10 +1,7 @@
 <template>
-  <div id="content">
+  <div :class="`main-content ${isUserLoggedIn ? 'main-content--logged-user' : ''}`">
     <heading />
-    <navigation v-if="showNavigation" />
-    <main>
-      <router-view />
-    </main>
+    <router-view class="main-content__router-view" />
     <foot />
   </div>
 </template>
@@ -17,19 +14,17 @@ import firebase from "firebase/app"
 import "firebase/auth"
 import 'firebase/firestore'
 
-import Navigation from './Navigation.vue'
 import Heading from './Heading.vue'
 import Foot from './Foot.vue'
 
 export default {
   name: 'MainContent',
   components: {
-    Navigation,
     Heading,
     Foot
   },
   computed: {
-    showNavigation() {
+    isUserLoggedIn() {
       return this.$store.getters.isUserLoggedIn
     }
   },
@@ -51,3 +46,36 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.main-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-top: 72px;
+
+  &--logged-user {
+    padding-top: 180px;
+
+    @media #{$screen-medium} {
+      padding-top: 120px;
+    }
+  }
+
+  &__router-view {
+    flex: 1 0 auto;
+    margin: $spacer-big $spacer;
+    @media #{$screen-medium} {
+      margin: $spacer-large 0;
+      width: 900px;
+      align-self: center;
+    }
+
+    @media #{$screen-big} {
+      width: 1200px;
+    }
+  }
+}
+</style>
+

@@ -26,6 +26,15 @@ export default {
 
   &__spinner {
     stroke: $secondary;
+    animation-name: spin;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    @keyframes spin {
+      from {transform: rotate(0deg)}
+      to {transform: rotate(360deg)}
+    }
   }
 }
 </style>
